@@ -3,7 +3,7 @@ package tnt
 import (
 	"context"
 
-	"github.com/mstgnz/cargo/config"
+	"github.com/mstgnz/shipping/config"
 )
 
 type tntCargo struct {

@@ -3,7 +3,7 @@ package sendeo
 import (
 	"context"
 
-	"github.com/mstgnz/cargo/config"
+	"github.com/mstgnz/shipping/config"
 )
 
 type sendeoCargo struct {

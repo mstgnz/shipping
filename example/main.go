@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"github.com/mstgnz/cargo/config"
+	"github.com/mstgnz/shipping/config"
 )
 
 func main() {

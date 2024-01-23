@@ -3,7 +3,7 @@ package ptt
 import (
 	"context"
 
-	"github.com/mstgnz/cargo/config"
+	"github.com/mstgnz/shipping/config"
 )
 
 type pttCargo struct {
