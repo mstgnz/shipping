@@ -10,7 +10,7 @@ type vatanCargo struct {
 	*cargo.Cargo
 }
 
-func NewVatanProvider() cargo.Shipper {
+func NewVatanCargo() cargo.Shipper {
 	return &vatanCargo{&cargo.Cargo{
 		Ctx: context.Background(),
 	}}

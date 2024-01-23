@@ -10,7 +10,7 @@ type pttCargo struct {
 	*cargo.Cargo
 }
 
-func NewPTTProvider() cargo.Shipper {
+func NewPTTCargo() cargo.Shipper {
 	return &pttCargo{&cargo.Cargo{
 		Ctx: context.Background(),
 	}}

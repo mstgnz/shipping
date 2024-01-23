@@ -10,7 +10,7 @@ type yurticiCargo struct {
 	*cargo.Cargo
 }
 
-func NewYurticiProvider() cargo.Shipper {
+func NewYurticiCargo() cargo.Shipper {
 	return &yurticiCargo{&cargo.Cargo{
 		Ctx: context.Background(),
 	}}

@@ -34,15 +34,15 @@ func registerProvider[T Shipper](name string, constructor func() T) {
 }
 
 func init() {
-	registerProvider("aras", aras.NewArasProvider)
-	registerProvider("dhl", dhl.NewDHLProvider)
-	registerProvider("fedex", fedex.NewFedexProvider)
-	registerProvider("mng", mng.NewMNGProvider)
-	registerProvider("ptt", ptt.NewPTTProvider)
-	registerProvider("sendeo", sendeo.NewSendeoProvider)
-	registerProvider("sürat", surat.NewSuratProvider)
-	registerProvider("tnt", tnt.NewTNTProvider)
-	registerProvider("kargo-turk", turk.NewTurkProvider)
-	registerProvider("ups", ups.NewUPSProvider)
-	registerProvider("yurtiçi", yurtici.NewYurticiProvider)
+	registerProvider("aras", aras.NewArasCargo)
+	registerProvider("dhl", dhl.NewDHLCargo)
+	registerProvider("fedex", fedex.NewFedexCargo)
+	registerProvider("mng", mng.NewMNGCargo)
+	registerProvider("ptt", ptt.NewPTTCargo)
+	registerProvider("sendeo", sendeo.NewSendeoCargo)
+	registerProvider("sürat", surat.NewSuratCargo)
+	registerProvider("tnt", tnt.NewTNTCargo)
+	registerProvider("kargo-turk", turk.NewTurkCargo)
+	registerProvider("ups", ups.NewUPSCargo)
+	registerProvider("yurtiçi", yurtici.NewYurticiCargo)
 }

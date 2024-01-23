@@ -10,7 +10,7 @@ type suratCargo struct {
 	*cargo.Cargo
 }
 
-func NewSuratProvider() cargo.Shipper {
+func NewSuratCargo() cargo.Shipper {
 	return &suratCargo{&cargo.Cargo{
 		Ctx: context.Background(),
 	}}
