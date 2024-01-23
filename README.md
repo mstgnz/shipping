@@ -1,6 +1,5 @@
 # Cargo Integration
 
-## Description
 It can be annoying to deal with implementing each of the shipping integrations on e-commerce sites. Each shipping company has a separate api documentation. It is nothing but a waste of time to read and apply this documentation for each of them and to do this repeatedly in every project. This project provides integration with all cargo companies with Go and offers it to your service.
 
 ## Cargo Companies
