@@ -3,17 +3,17 @@ package cargo
 import (
 	"errors"
 
-	"github.com/mstgnz/cargo/providers/aras"
-	"github.com/mstgnz/cargo/providers/dhl"
-	"github.com/mstgnz/cargo/providers/fedex"
-	"github.com/mstgnz/cargo/providers/mng"
-	"github.com/mstgnz/cargo/providers/ptt"
-	"github.com/mstgnz/cargo/providers/sendeo"
-	"github.com/mstgnz/cargo/providers/surat"
-	"github.com/mstgnz/cargo/providers/tnt"
-	"github.com/mstgnz/cargo/providers/turk"
-	"github.com/mstgnz/cargo/providers/ups"
-	"github.com/mstgnz/cargo/providers/yurtici"
+	"github.com/mstgnz/shipping/cargo/aras"
+	"github.com/mstgnz/shipping/cargo/dhl"
+	"github.com/mstgnz/shipping/cargo/fedex"
+	"github.com/mstgnz/shipping/cargo/mng"
+	"github.com/mstgnz/shipping/cargo/ptt"
+	"github.com/mstgnz/shipping/cargo/sendeo"
+	"github.com/mstgnz/shipping/cargo/surat"
+	"github.com/mstgnz/shipping/cargo/tnt"
+	"github.com/mstgnz/shipping/cargo/turk"
+	"github.com/mstgnz/shipping/cargo/ups"
+	"github.com/mstgnz/shipping/cargo/yurtici"
 )
 
 // providerMap is a map that associates Provider names with their corresponding constructor functions.
