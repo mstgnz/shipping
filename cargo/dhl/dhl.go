@@ -10,7 +10,7 @@ type dhlCargo struct {
 	*cargo.Cargo
 }
 
-func NewDHLProvider() cargo.Shipper {
+func NewDHLCargo() cargo.Shipper {
 	return &dhlCargo{&cargo.Cargo{
 		Ctx: context.Background(),
 	}}

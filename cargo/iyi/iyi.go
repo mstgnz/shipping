@@ -10,7 +10,7 @@ type iyiCargo struct {
 	*cargo.Cargo
 }
 
-func NewIyiProvider() cargo.Shipper {
+func NewIyiCargo() cargo.Shipper {
 	return &iyiCargo{&cargo.Cargo{
 		Ctx: context.Background(),
 	}}

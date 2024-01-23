@@ -10,7 +10,7 @@ type arasCargo struct {
 	*cargo.Cargo
 }
 
-func NewArasProvider() cargo.Shipper {
+func NewArasCargo() cargo.Shipper {
 	return &arasCargo{&cargo.Cargo{
 		Ctx: context.Background(),
 	}}

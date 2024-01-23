@@ -10,7 +10,7 @@ type tntCargo struct {
 	*cargo.Cargo
 }
 
-func NewTNTProvider() cargo.Shipper {
+func NewTNTCargo() cargo.Shipper {
 	return &tntCargo{&cargo.Cargo{
 		Ctx: context.Background(),
 	}}

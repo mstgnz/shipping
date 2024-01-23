@@ -10,7 +10,7 @@ type sendeoCargo struct {
 	*cargo.Cargo
 }
 
-func NewSendeoProvider() cargo.Shipper {
+func NewSendeoCargo() cargo.Shipper {
 	return &sendeoCargo{&cargo.Cargo{
 		Ctx: context.Background(),
 	}}

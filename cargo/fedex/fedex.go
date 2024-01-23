@@ -10,7 +10,7 @@ type fedexCargo struct {
 	*cargo.Cargo
 }
 
-func NewFedexProvider() cargo.Shipper {
+func NewFedexCargo() cargo.Shipper {
 	return &fedexCargo{&cargo.Cargo{
 		Ctx: context.Background(),
 	}}

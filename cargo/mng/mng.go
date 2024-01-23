@@ -10,7 +10,7 @@ type mngCargo struct {
 	*cargo.Cargo
 }
 
-func NewMNGProvider() cargo.Shipper {
+func NewMNGCargo() cargo.Shipper {
 	return &mngCargo{&cargo.Cargo{
 		Ctx: context.Background(),
 	}}

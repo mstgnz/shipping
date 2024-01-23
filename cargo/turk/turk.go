@@ -10,7 +10,7 @@ type turkCargo struct {
 	*cargo.Cargo
 }
 
-func NewTurkProvider() cargo.Shipper {
+func NewTurkCargo() cargo.Shipper {
 	return &turkCargo{&cargo.Cargo{
 		Ctx: context.Background(),
 	}}
