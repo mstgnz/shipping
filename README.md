@@ -17,3 +17,6 @@ It can be annoying to deal with implementing each of the shipping integrations o
 | [KARGO TÜRK](https://www.kargoturk.com.tr/) | :white_check_mark: | :negative_squared_cross_mark:  |
 | [UPS](https://www.ups.com.tr/)              | :white_check_mark: | :negative_squared_cross_mark:  |
 | [YURTİÇİ](https://www.yurticikargo.com/)    | :white_check_mark: | :negative_squared_cross_mark:  |
+
+
+Note: Integration will be made as the documentation of the relevant companies is accessed.
