@@ -16,17 +16,17 @@ func NewDHLCargo() cargo.Shipper {
 	}}
 }
 
-func (d dhlCargo) CreateCargo() error {
+func (d dhlCargo) CreateCargo(data map[string]any) (map[string]any, error) {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (d dhlCargo) WhereIsTheCargo() error {
+func (d dhlCargo) WhereIsTheCargo(tracking string) (map[string]any, error) {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (d dhlCargo) CancelCargo() error {
+func (d dhlCargo) CancelCargo(tracking string) (map[string]any, error) {
 	//TODO implement me
 	panic("implement me")
 }

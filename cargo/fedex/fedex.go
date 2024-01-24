@@ -16,17 +16,17 @@ func NewFedexCargo() cargo.Shipper {
 	}}
 }
 
-func (f fedexCargo) CreateCargo() error {
+func (f fedexCargo) CreateCargo(data map[string]any) (map[string]any, error) {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (f fedexCargo) WhereIsTheCargo() error {
+func (f fedexCargo) WhereIsTheCargo(tracking string) (map[string]any, error) {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (f fedexCargo) CancelCargo() error {
+func (f fedexCargo) CancelCargo(tracking string) (map[string]any, error) {
 	//TODO implement me
 	panic("implement me")
 }
