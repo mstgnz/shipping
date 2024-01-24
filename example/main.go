@@ -8,11 +8,11 @@ import (
 
 func main() {
 
-	provider, err := cargo.NewProviderByName("aras")
+	aras, err := cargo.NewProviderByName("aras")
 	if err != nil {
 		return
 	}
 
-	log.Println(provider)
+	log.Println(aras)
 
 }
