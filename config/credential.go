@@ -12,8 +12,8 @@ func (c *Credential) GetTitle() string {
 }
 
 // SetTitle sets the title associated with the Credential.
-func (c *Credential) SetTitle(username string) {
-	c.Title = username
+func (c *Credential) SetTitle(title string) {
+	c.Title = title
 }
 
 // GetUsername retrieves the username associated with the Credential.
