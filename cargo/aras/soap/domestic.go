@@ -1,16 +1,16 @@
 package soap
 
-type ArasData struct {
-	userName  string      `json:"userName"`
-	password  string      `json:"password"`
-	orderInfo []orderInfo `json:"orderInfo"`
+type createData struct {
+	userName  string
+	password  string
+	orderInfo orderInfo
 }
 
 type orderInfo struct {
-	Order []Order
+	Order order
 }
 
-type Order struct {
+type order struct {
 	TradingWaybillNumber string
 	InvoiceNumber        string
 	IntegrationCode      string
@@ -43,14 +43,14 @@ type Order struct {
 	Description          string
 	PrivilegeOrder       string
 	PieceCount           string
-	PieceDetails         []PieceDetails
+	PieceDetails         pieceDetails
 }
 
-type PieceDetails struct {
-	PieceDetail []PieceDetail
+type pieceDetails struct {
+	PieceDetail pieceDetail
 }
 
-type PieceDetail struct {
+type pieceDetail struct {
 	VolumetricWeight string
 	Weight           string
 	BarcodeNumber    string
