@@ -16,17 +16,17 @@ func NewArasCargo() cargo.Shipper {
 	}}
 }
 
-func (a arasCargo) CreateCargo() error {
+func (a arasCargo) CreateCargo(data map[string]any) (map[string]any, error) {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (a arasCargo) WhereIsTheCargo() error {
+func (a arasCargo) WhereIsTheCargo(tracking string) (map[string]any, error) {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (a arasCargo) CancelCargo() error {
+func (a arasCargo) CancelCargo(tracking string) (map[string]any, error) {
 	//TODO implement me
 	panic("implement me")
 }
