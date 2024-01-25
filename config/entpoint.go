@@ -32,3 +32,11 @@ func (c *Endpoint) GetDevelopment() string {
 func (c *Endpoint) SetDevelopment(development string) {
 	c.Development = development
 }
+
+// GetActiveUrl Returns Url according to Mode value
+func (c *Endpoint) GetActiveUrl(mode string) string {
+	if mode == "Development" {
+		return c.Development
+	}
+	return c.Production
+}
