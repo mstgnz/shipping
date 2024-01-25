@@ -5,11 +5,14 @@ import (
 )
 
 type Cargo struct {
-	Ctx         context.Context
-	ServiceType string       // Soap or Rest
-	Mode        string       // Production or Development
-	Credentials []Credential // Production and Development
-	Endpoints   []Endpoint   // Some carriers may have more than one endpoint, and has a Production and Development endpoint for each one
+	Ctx               context.Context
+	ServiceType       string       // Soap or Rest
+	Mode              string       // Production or Development
+	IsDomestic        bool         // True if the product is domestic, False if it is abroad
+	CurrentCredential string       // Current Credential
+	CurrentEndpoint   string       // Current Endpoint
+	Credentials       []Credential // List of available credentials
+	Endpoints         []Endpoint   // List of available endpoints
 }
 
 // GetContext retrieves the context associated with the Cargo.
@@ -46,6 +49,36 @@ func (c *Cargo) SetMode(mode string) {
 	c.Mode = mode
 }
 
+// GetDomestic retrieves the IsDomestic (True or False) status of the Cargo.
+func (c *Cargo) GetDomestic() bool {
+	return c.IsDomestic
+}
+
+// SetDomestic sets the IsDomestic (True or False) status of the Cargo.
+func (c *Cargo) SetDomestic(isDomestic bool) {
+	c.IsDomestic = isDomestic
+}
+
+// GetCurrentCredential get active credential title
+func (c *Cargo) GetCurrentCredential() string {
+	return c.CurrentCredential
+}
+
+// SetCurrentCredential set active credential title
+func (c *Cargo) SetCurrentCredential(currentCredential string) {
+	c.CurrentCredential = currentCredential
+}
+
+// GetCurrentEndpoint get active endpoint title
+func (c *Cargo) GetCurrentEndpoint() string {
+	return c.CurrentEndpoint
+}
+
+// SetCurrentEndpoint set active endpoint title
+func (c *Cargo) SetCurrentEndpoint(currentEndpoint string) {
+	c.CurrentEndpoint = currentEndpoint
+}
+
 // GetCredentials retrieves the list of credentials in the Cargo.
 func (c *Cargo) GetCredentials() []Credential {
 	return c.Credentials
@@ -61,7 +94,7 @@ func (c *Cargo) GetCredential(title string) Credential {
 	return Credential{}
 }
 
-// AddCredential adds a new credential to the Cargo.
+// AddCredential adds a new credential to the Cargo with the specified title, username, and password.
 func (c *Cargo) AddCredential(title, username, password string) {
 	c.Credentials = append(c.Credentials, Credential{Title: title, Username: username, Password: password})
 }
@@ -91,7 +124,7 @@ func (c *Cargo) GetEndpoint(title string) Endpoint {
 	return Endpoint{}
 }
 
-// AddEndpoint adds a new endpoint to the Cargo.
+// AddEndpoint adds a new endpoint to the Cargo with the specified title, production, and development URLs.
 func (c *Cargo) AddEndpoint(title, production, development string) {
 	c.Endpoints = append(c.Endpoints, Endpoint{Title: title, Production: production, Development: development})
 }
