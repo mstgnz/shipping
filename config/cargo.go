@@ -4,6 +4,19 @@ import (
 	"context"
 )
 
+// Cargo struct represents a structure designed to manage multiple endpoints and credentials in cargo integrations.
+// It facilitates the storage of information about various available credentials and endpoints, providing the flexibility to switch between them.
+// The fields CurrentCredential and CurrentEndpoint specifically store information about the currently active credential and endpoint.
+// This enables you to use the active ones in your cargo requests. You can modify these active settings using the provided set methods.
+//
+// ServiceType represents the type of service utilized in cargo integrations, which can be either "Soap" or "Rest".
+// It indicates the communication protocol employed for data exchange.
+//
+// Mode specifies the operational mode of the cargo integration, which can be either "Production" or "Development".
+// It defines whether the integration is configured for real-world usage or testing purposes.
+//
+// IsDomestic indicates whether the cargo corresponds to a domestic product (True) or an international one (False).
+// It helps in distinguishing between shipments within the country and those abroad.
 type Cargo struct {
 	Ctx               context.Context
 	ServiceType       string       // Soap or Rest
