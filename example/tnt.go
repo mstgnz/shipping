@@ -8,12 +8,12 @@ import (
 
 func main() {
 
-	mng, err := util.NewProviderByName("mng")
+	tnt, err := util.NewProviderByName("tnt")
 
 	if err != nil {
-		return
+		log.Println("Error: ", err)
 	}
 
-	log.Println(mng)
+	log.Println(tnt.CreateCargo(nil))
 
 }
