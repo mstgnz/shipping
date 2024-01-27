@@ -1,8 +1,6 @@
 package ups
 
 import (
-	"context"
-
 	"github.com/mstgnz/shipping/config"
 )
 
@@ -11,9 +9,7 @@ type upsCargo struct {
 }
 
 func NewUPSCargo() cargo.Shipper {
-	return &upsCargo{&cargo.Cargo{
-		Ctx: context.Background(),
-	}}
+	return &upsCargo{&cargo.Cargo{}}
 }
 
 func (u upsCargo) CreateCargo(data map[string]any) (map[string]any, error) {

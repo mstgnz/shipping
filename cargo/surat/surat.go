@@ -1,8 +1,6 @@
 package surat
 
 import (
-	"context"
-
 	"github.com/mstgnz/shipping/config"
 )
 
@@ -11,9 +9,7 @@ type suratCargo struct {
 }
 
 func NewSuratCargo() cargo.Shipper {
-	return &suratCargo{&cargo.Cargo{
-		Ctx: context.Background(),
-	}}
+	return &suratCargo{&cargo.Cargo{}}
 }
 
 func (s suratCargo) CreateCargo(data map[string]any) (map[string]any, error) {

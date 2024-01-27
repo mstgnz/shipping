@@ -1,8 +1,6 @@
 package dhl
 
 import (
-	"context"
-
 	"github.com/mstgnz/shipping/config"
 )
 
@@ -11,9 +9,7 @@ type dhlCargo struct {
 }
 
 func NewDHLCargo() cargo.Shipper {
-	return &dhlCargo{&cargo.Cargo{
-		Ctx: context.Background(),
-	}}
+	return &dhlCargo{&cargo.Cargo{}}
 }
 
 func (d dhlCargo) CreateCargo(data map[string]any) (map[string]any, error) {

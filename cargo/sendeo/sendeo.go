@@ -1,8 +1,6 @@
 package sendeo
 
 import (
-	"context"
-
 	"github.com/mstgnz/shipping/config"
 )
 
@@ -11,9 +9,7 @@ type sendeoCargo struct {
 }
 
 func NewSendeoCargo() cargo.Shipper {
-	return &sendeoCargo{&cargo.Cargo{
-		Ctx: context.Background(),
-	}}
+	return &sendeoCargo{&cargo.Cargo{}}
 }
 
 func (s sendeoCargo) CreateCargo(data map[string]any) (map[string]any, error) {

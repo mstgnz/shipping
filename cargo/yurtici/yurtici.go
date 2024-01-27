@@ -1,8 +1,6 @@
 package yurtici
 
 import (
-	"context"
-
 	"github.com/mstgnz/shipping/config"
 )
 
@@ -11,9 +9,7 @@ type yurticiCargo struct {
 }
 
 func NewYurticiCargo() cargo.Shipper {
-	return &yurticiCargo{&cargo.Cargo{
-		Ctx: context.Background(),
-	}}
+	return &yurticiCargo{&cargo.Cargo{}}
 }
 
 func (y yurticiCargo) CreateCargo(data map[string]any) (map[string]any, error) {

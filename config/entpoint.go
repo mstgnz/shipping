@@ -1,42 +1,53 @@
 package cargo
 
 type Endpoint struct {
-	Title       string // some cargo companies may have more than one endpoint. (shipment, reference, vs, vs)
-	Production  string // live url
-	Development string // test url
+	title       string // some cargo companies may have more than one endpoint. (shipment, reference, vs, vs)
+	production  string // live url
+	development string // test url
+	isActive    bool   // is active
 }
 
-func (c *Endpoint) GetTitle() string {
-	return c.Title
+func (e *Endpoint) GetTitle() string {
+	return e.title
 }
 
 // SetTitle sets the title of the endpoint.
-func (c *Endpoint) SetTitle(title string) {
-	c.Title = title
+func (e *Endpoint) SetTitle(title string) {
+	e.title = title
 }
 
-func (c *Endpoint) GetProduction() string {
-	return c.Production
+func (e *Endpoint) GetProduction() string {
+	return e.production
 }
 
 // SetProduction sets the production endpoint URL.
-func (c *Endpoint) SetProduction(production string) {
-	c.Production = production
+func (e *Endpoint) SetProduction(production string) {
+	e.production = production
 }
 
-func (c *Endpoint) GetDevelopment() string {
-	return c.Development
+func (e *Endpoint) GetDevelopment() string {
+	return e.development
 }
 
 // SetDevelopment sets the development endpoint URL.
-func (c *Endpoint) SetDevelopment(development string) {
-	c.Development = development
+func (e *Endpoint) SetDevelopment(development string) {
+	e.development = development
 }
 
 // GetActiveUrl Returns Url according to Mode value
-func (c *Endpoint) GetActiveUrl(mode string) string {
-	if mode == "Development" {
-		return c.Development
+func (e *Endpoint) GetActiveUrl(mode Mode) string {
+	if mode == DEVELOPMENT {
+		return e.development
 	}
-	return c.Production
+	return e.production
+}
+
+// GetActive retrieves the isActive (True or False) status of the Endpoint.
+func (e *Endpoint) GetActive() bool {
+	return e.isActive
+}
+
+// SetActive sets the isActive (True or False) status of the Endpoint.
+func (e *Endpoint) SetActive(isActive bool) {
+	e.isActive = isActive
 }

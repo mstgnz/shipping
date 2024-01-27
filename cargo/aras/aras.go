@@ -1,8 +1,6 @@
 package aras
 
 import (
-	"context"
-
 	"github.com/mstgnz/shipping/config"
 )
 
@@ -11,9 +9,7 @@ type arasCargo struct {
 }
 
 func NewArasCargo() cargo.Shipper {
-	return &arasCargo{&cargo.Cargo{
-		Ctx: context.Background(),
-	}}
+	return &arasCargo{&cargo.Cargo{}}
 }
 
 func (a arasCargo) CreateCargo(data map[string]any) (map[string]any, error) {
