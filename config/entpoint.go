@@ -39,7 +39,10 @@ func (e *Endpoint) GetActiveUrl(mode Mode) string {
 	if mode == DEVELOPMENT {
 		return e.development
 	}
-	return e.production
+	if mode == PRODUCTION {
+		return e.development
+	}
+	return e.development
 }
 
 // GetActive retrieves the isActive (True or False) status of the Endpoint.
