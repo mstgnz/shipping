@@ -7,6 +7,7 @@ import (
 	"github.com/mstgnz/shipping/cargo/aras"
 	"github.com/mstgnz/shipping/cargo/dhl"
 	"github.com/mstgnz/shipping/cargo/fedex"
+	"github.com/mstgnz/shipping/cargo/iyi"
 	"github.com/mstgnz/shipping/cargo/mng"
 	"github.com/mstgnz/shipping/cargo/ptt"
 	"github.com/mstgnz/shipping/cargo/sendeo"
@@ -14,6 +15,7 @@ import (
 	"github.com/mstgnz/shipping/cargo/tnt"
 	"github.com/mstgnz/shipping/cargo/turk"
 	"github.com/mstgnz/shipping/cargo/ups"
+	"github.com/mstgnz/shipping/cargo/vatan"
 	"github.com/mstgnz/shipping/cargo/yurtici"
 	"github.com/mstgnz/shipping/config"
 )
@@ -41,12 +43,14 @@ func init() {
 	registerProvider("aras", aras.NewArasCargo)
 	registerProvider("dhl", dhl.NewDHLCargo)
 	registerProvider("fedex", fedex.NewFedexCargo)
+	registerProvider("iyi", iyi.NewIyiCargo)
 	registerProvider("mng", mng.NewMNGCargo)
 	registerProvider("ptt", ptt.NewPTTCargo)
 	registerProvider("sendeo", sendeo.NewSendeoCargo)
-	registerProvider("sürat", surat.NewSuratCargo)
+	registerProvider("surat", surat.NewSuratCargo)
 	registerProvider("tnt", tnt.NewTNTCargo)
-	registerProvider("kargo-turk", turk.NewTurkCargo)
+	registerProvider("turk", turk.NewTurkCargo)
 	registerProvider("ups", ups.NewUPSCargo)
-	registerProvider("yurtiçi", yurtici.NewYurticiCargo)
+	registerProvider("vatan", vatan.NewVatanCargo)
+	registerProvider("yurtici", yurtici.NewYurticiCargo)
 }
