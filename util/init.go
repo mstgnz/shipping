@@ -1,6 +1,7 @@
-package cargo
+package util
 
 import (
+	"context"
 	"errors"
 
 	"github.com/mstgnz/shipping/cargo/aras"
@@ -14,22 +15,25 @@ import (
 	"github.com/mstgnz/shipping/cargo/turk"
 	"github.com/mstgnz/shipping/cargo/ups"
 	"github.com/mstgnz/shipping/cargo/yurtici"
+	"github.com/mstgnz/shipping/config"
 )
 
 // providerMap is a map that associates Provider names with their corresponding constructor functions.
 var providerMap = make(map[string]interface{})
 
 // NewProviderByName returns a new preconfigured provider instance by its name identifier.
-func NewProviderByName(name string) (Shipper, error) {
+func NewProviderByName(name string) (cargo.Shipper, error) {
 	constructorFunc, ok := providerMap[name]
 	if ok {
-		return constructorFunc.(func() Shipper)(), nil
+		construct := constructorFunc.(func() cargo.Shipper)()
+		construct.SetContext(context.Background())
+		return construct, nil
 	}
-	return constructorFunc.(func() Shipper)(), errors.New("Missing provider " + name)
+	return nil, errors.New("Missing provider " + name)
 }
 
 // registerProvider registers a Provider constructor function with a given name.
-func registerProvider[T Shipper](name string, constructor func() T) {
+func registerProvider[T cargo.Shipper](name string, constructor func() T) {
 	providerMap[name] = constructor
 }
 

@@ -3,16 +3,17 @@ package main
 import (
 	"log"
 
-	"github.com/mstgnz/shipping/config"
+	"github.com/mstgnz/shipping/util"
 )
 
 func main() {
 
-	aras, err := cargo.NewProviderByName("aras")
+	mng, err := util.NewProviderByName("mng")
+
 	if err != nil {
 		return
 	}
 
-	log.Println(aras)
+	log.Println(mng)
 
 }

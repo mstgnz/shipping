@@ -1,8 +1,6 @@
 package fedex
 
 import (
-	"context"
-
 	"github.com/mstgnz/shipping/config"
 )
 
@@ -11,9 +9,7 @@ type fedexCargo struct {
 }
 
 func NewFedexCargo() cargo.Shipper {
-	return &fedexCargo{&cargo.Cargo{
-		Ctx: context.Background(),
-	}}
+	return &fedexCargo{&cargo.Cargo{}}
 }
 
 func (f fedexCargo) CreateCargo(data map[string]any) (map[string]any, error) {

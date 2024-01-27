@@ -1,37 +1,49 @@
 package cargo
 
+// Credential information is different for live and test environments.
 type Credential struct {
-	Title    string // Production or Development
-	Username string
-	Password string
+	title    string // Production or Development vs vs
+	username string
+	password string
+	isActive bool // is active
 }
 
 // GetTitle retrieves the title associated with the Credential.
 func (c *Credential) GetTitle() string {
-	return c.Title
+	return c.title
 }
 
 // SetTitle sets the title associated with the Credential.
 func (c *Credential) SetTitle(title string) {
-	c.Title = title
+	c.title = title
 }
 
 // GetUsername retrieves the username associated with the Credential.
 func (c *Credential) GetUsername() string {
-	return c.Username
+	return c.username
 }
 
 // SetUsername sets the username associated with the Credential.
 func (c *Credential) SetUsername(username string) {
-	c.Username = username
+	c.username = username
 }
 
 // GetPassword retrieves the password associated with the Credential.
 func (c *Credential) GetPassword() string {
-	return c.Password
+	return c.password
 }
 
 // SetPassword sets the password associated with the Credential.
 func (c *Credential) SetPassword(password string) {
-	c.Password = password
+	c.password = password
+}
+
+// GetActive retrieves the isActive (True or False) status of the Credential.
+func (c *Credential) GetActive() bool {
+	return c.isActive
+}
+
+// SetActive sets the isActive (True or False) status of the Credential.
+func (c *Credential) SetActive(isActive bool) {
+	c.isActive = isActive
 }

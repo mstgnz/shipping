@@ -1,8 +1,6 @@
 package vatan
 
 import (
-	"context"
-
 	"github.com/mstgnz/shipping/config"
 )
 
@@ -11,9 +9,7 @@ type vatanCargo struct {
 }
 
 func NewVatanCargo() cargo.Shipper {
-	return &vatanCargo{&cargo.Cargo{
-		Ctx: context.Background(),
-	}}
+	return &vatanCargo{&cargo.Cargo{}}
 }
 
 func (v vatanCargo) CreateCargo(data map[string]any) (map[string]any, error) {

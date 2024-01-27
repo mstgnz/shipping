@@ -1,8 +1,6 @@
 package tnt
 
 import (
-	"context"
-
 	"github.com/mstgnz/shipping/config"
 )
 
@@ -11,9 +9,7 @@ type tntCargo struct {
 }
 
 func NewTNTCargo() cargo.Shipper {
-	return &tntCargo{&cargo.Cargo{
-		Ctx: context.Background(),
-	}}
+	return &tntCargo{&cargo.Cargo{}}
 }
 
 func (t tntCargo) CreateCargo(data map[string]any) (map[string]any, error) {

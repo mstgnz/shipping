@@ -1,4 +1,4 @@
-package cargo
+package util
 
 import (
 	"strings"

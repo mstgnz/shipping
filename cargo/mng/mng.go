@@ -1,8 +1,6 @@
 package mng
 
 import (
-	"context"
-
 	"github.com/mstgnz/shipping/config"
 )
 
@@ -11,12 +9,16 @@ type mngCargo struct {
 }
 
 func NewMNGCargo() cargo.Shipper {
-	return &mngCargo{&cargo.Cargo{
-		Ctx: context.Background(),
-	}}
+	return &mngCargo{&cargo.Cargo{}}
 }
 
 func (m mngCargo) CreateCargo(data map[string]any) (map[string]any, error) {
+	//current := m.GetCurrentEndpointAndCredential()
+	if m.IsDomestic() {
+
+	} else {
+
+	}
 	//TODO implement me
 	panic("implement me")
 }

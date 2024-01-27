@@ -1,8 +1,6 @@
 package ptt
 
 import (
-	"context"
-
 	"github.com/mstgnz/shipping/config"
 )
 
@@ -11,9 +9,7 @@ type pttCargo struct {
 }
 
 func NewPTTCargo() cargo.Shipper {
-	return &pttCargo{&cargo.Cargo{
-		Ctx: context.Background(),
-	}}
+	return &pttCargo{&cargo.Cargo{}}
 }
 
 func (p pttCargo) CreateCargo(data map[string]any) (map[string]any, error) {

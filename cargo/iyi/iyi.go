@@ -1,8 +1,6 @@
 package iyi
 
 import (
-	"context"
-
 	"github.com/mstgnz/shipping/config"
 )
 
@@ -11,9 +9,7 @@ type iyiCargo struct {
 }
 
 func NewIyiCargo() cargo.Shipper {
-	return &iyiCargo{&cargo.Cargo{
-		Ctx: context.Background(),
-	}}
+	return &iyiCargo{&cargo.Cargo{}}
 }
 
 func (i iyiCargo) CreateCargo(data map[string]any) (map[string]any, error) {
