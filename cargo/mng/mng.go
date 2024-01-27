@@ -1,6 +1,8 @@
 package mng
 
 import (
+	"github.com/mstgnz/shipping/cargo/mng/rest"
+	"github.com/mstgnz/shipping/cargo/mng/soap"
 	"github.com/mstgnz/shipping/config"
 )
 
@@ -13,14 +15,23 @@ func NewMNGCargo() cargo.Shipper {
 }
 
 func (m mngCargo) CreateCargo(data map[string]any) (map[string]any, error) {
-	//current := m.GetCurrentEndpointAndCredential()
-	if m.IsDomestic() {
-
-	} else {
-
+	var err error
+	var result map[string]any
+	if m.GetServiceType() == cargo.SOAP {
+		if m.IsDomestic() {
+			result, err = soap.CreateDomestic(m.GetCurrentEndpointAndCredential(), data)
+		} else {
+			result, err = soap.CreateAbroad(m.GetCurrentEndpointAndCredential(), data)
+		}
 	}
-	//TODO implement me
-	panic("implement me")
+	if m.GetServiceType() == cargo.REST {
+		if m.IsDomestic() {
+			result, err = rest.CreateDomestic(m.GetCurrentEndpointAndCredential(), data)
+		} else {
+			result, err = rest.CreateAbroad(m.GetCurrentEndpointAndCredential(), data)
+		}
+	}
+	return result, err
 }
 
 func (m mngCargo) WhereIsTheCargo(tracking string) (map[string]any, error) {

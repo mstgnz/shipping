@@ -1,4 +1,4 @@
-package soap
+package rest
 
 import (
 	"github.com/mstgnz/shipping/config"
