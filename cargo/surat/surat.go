@@ -1,6 +1,8 @@
 package surat
 
 import (
+	"github.com/mstgnz/shipping/cargo/surat/rest"
+	"github.com/mstgnz/shipping/cargo/surat/soap"
 	"github.com/mstgnz/shipping/config"
 )
 
@@ -13,8 +15,23 @@ func NewSuratCargo() cargo.Shipper {
 }
 
 func (s suratCargo) CreateCargo(data map[string]any) (map[string]any, error) {
-	//TODO implement me
-	panic("implement me")
+	var err error
+	var result map[string]any
+	if s.GetServiceType() == cargo.SOAP {
+		if s.IsDomestic() {
+			result, err = soap.CreateDomestic(s.GetCurrentEndpointAndCredential(), data)
+		} else {
+			result, err = soap.CreateAbroad(s.GetCurrentEndpointAndCredential(), data)
+		}
+	}
+	if s.GetServiceType() == cargo.REST {
+		if s.IsDomestic() {
+			result, err = rest.CreateDomestic(s.GetCurrentEndpointAndCredential(), data)
+		} else {
+			result, err = rest.CreateAbroad(s.GetCurrentEndpointAndCredential(), data)
+		}
+	}
+	return result, err
 }
 
 func (s suratCargo) WhereIsTheCargo(tracking string) (map[string]any, error) {
