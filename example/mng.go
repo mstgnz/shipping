@@ -24,11 +24,11 @@ func main() {
 
 	s := soap.SiparisGirisiDetayliV3{}
 
-	createCargo, err := mng.CreateCargo(s)
+	createResp, err := mng.CreateCargo(s)
 	if err != nil {
 		log.Println("Create Error: ", err)
 	}
 
-	log.Println(createCargo.Body)
+	log.Println("Body: ", createResp.Body)
 
 }

@@ -1,8 +1,6 @@
 package mng
 
 import (
-	"net/http"
-
 	"github.com/mstgnz/shipping/cargo/mng/rest"
 	"github.com/mstgnz/shipping/cargo/mng/soap"
 	"github.com/mstgnz/shipping/config"
@@ -18,9 +16,9 @@ func NewMNGCargo() cargo.Shipper {
 	return &mngCargo{&cargo.Cargo{}}
 }
 
-func (m mngCargo) CreateCargo(data cargo.ShippingData) (*http.Response, error) {
+func (m mngCargo) CreateCargo(data cargo.ShippingData) (*cargo.Response, error) {
 	var err error
-	var result *http.Response
+	var result *cargo.Response
 	switch m.GetServiceType() {
 	case cargo.SOAP:
 		if m.IsDomestic() {
@@ -38,12 +36,12 @@ func (m mngCargo) CreateCargo(data cargo.ShippingData) (*http.Response, error) {
 	return result, err
 }
 
-func (m mngCargo) WhereIsTheCargo(data cargo.ShippingData) (*http.Response, error) {
+func (m mngCargo) WhereIsTheCargo(data cargo.ShippingData) (*cargo.Response, error) {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (m mngCargo) CancelCargo(data cargo.ShippingData) (*http.Response, error) {
+func (m mngCargo) CancelCargo(data cargo.ShippingData) (*cargo.Response, error) {
 	//TODO implement me
 	panic("implement me")
 }
