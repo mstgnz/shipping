@@ -1,8 +1,6 @@
 package yurtici
 
 import (
-	"net/http"
-
 	"github.com/mstgnz/shipping/cargo/yurtici/rest"
 	"github.com/mstgnz/shipping/cargo/yurtici/soap"
 	"github.com/mstgnz/shipping/config"
@@ -16,9 +14,9 @@ func NewYurticiCargo() cargo.Shipper {
 	return &yurticiCargo{&cargo.Cargo{}}
 }
 
-func (y yurticiCargo) CreateCargo(data cargo.ShippingData) (*http.Response, error) {
+func (y yurticiCargo) CreateCargo(data cargo.ShippingData) (*cargo.Response, error) {
 	var err error
-	var result *http.Response
+	var result *cargo.Response
 	switch y.GetServiceType() {
 	case cargo.SOAP:
 		if y.IsDomestic() {
@@ -36,12 +34,12 @@ func (y yurticiCargo) CreateCargo(data cargo.ShippingData) (*http.Response, erro
 	return result, err
 }
 
-func (y yurticiCargo) WhereIsTheCargo(data cargo.ShippingData) (*http.Response, error) {
+func (y yurticiCargo) WhereIsTheCargo(data cargo.ShippingData) (*cargo.Response, error) {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (y yurticiCargo) CancelCargo(data cargo.ShippingData) (*http.Response, error) {
+func (y yurticiCargo) CancelCargo(data cargo.ShippingData) (*cargo.Response, error) {
 	//TODO implement me
 	panic("implement me")
 }
