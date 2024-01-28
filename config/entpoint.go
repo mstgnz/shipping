@@ -36,13 +36,14 @@ func (e *Endpoint) SetDevelopment(development string) {
 
 // GetActiveUrl Returns Url according to Mode value
 func (e *Endpoint) GetActiveUrl(mode Mode) string {
-	if mode == DEVELOPMENT {
+	switch mode {
+	case DEVELOPMENT:
+		return e.development
+	case PRODUCTION:
+		return e.production
+	default:
 		return e.development
 	}
-	if mode == PRODUCTION {
-		return e.development
-	}
-	return e.development
 }
 
 // GetActive retrieves the isActive (True or False) status of the Endpoint.

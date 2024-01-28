@@ -35,15 +35,15 @@ type Shipper interface {
 	IsDomestic() bool
 	SetDomestic(isDomestic bool)
 
-	GetEndpoints() []Endpoint
-	GetEndpoint(title string) Endpoint
-	AddEndpoint(title, production, development string)
-	DelEndpoint(title string) []Endpoint
+	GetEndpoints() []*Endpoint
+	GetEndpoint(title string) *Endpoint
+	AddEndpoint(title, production, development string) *Endpoint
+	DelEndpoint(title string) []*Endpoint
 
-	GetCredentials() []Credential
-	GetCredential(title string) Credential
-	AddCredential(title, username, password string)
-	DelCredential(title string) []Credential
+	GetCredentials() []*Credential
+	GetCredential(title string) *Credential
+	AddCredential(title, username, password string) *Credential
+	DelCredential(title string) []*Credential
 
 	GetCurrentEndpointAndCredential() Current
 
