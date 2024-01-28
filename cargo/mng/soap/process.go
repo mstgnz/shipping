@@ -7,19 +7,19 @@ import (
 // CreateAbroad
 // https://service.mngkargo.com.tr/musterikargosiparis/musterikargosiparis.asmx
 func CreateAbroad(current cargo.Current, data cargo.ShippingData) (map[string]any, error) {
-	parseAbroad(data)
+	_ = parseAbroad(data)
 	return nil, nil
 }
 
 func CreateDomestic(current cargo.Current, data cargo.ShippingData) (map[string]any, error) {
-	parseDomestic(data)
+	_ = parseDomestic(data)
 	return nil, nil
 }
 
-func parseAbroad(data cargo.ShippingData) {
-
+func parseAbroad(data cargo.ShippingData) error {
+	return nil
 }
 
-func parseDomestic(data cargo.ShippingData) {
-
+func parseDomestic(data cargo.ShippingData) error {
+	return nil
 }
