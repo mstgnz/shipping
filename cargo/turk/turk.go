@@ -1,8 +1,6 @@
 package turk
 
 import (
-	"net/http"
-
 	"github.com/mstgnz/shipping/cargo/turk/rest"
 	"github.com/mstgnz/shipping/cargo/turk/soap"
 	"github.com/mstgnz/shipping/config"
@@ -16,9 +14,9 @@ func NewTurkCargo() cargo.Shipper {
 	return &turkCargo{&cargo.Cargo{}}
 }
 
-func (t turkCargo) CreateCargo(data cargo.ShippingData) (*http.Response, error) {
+func (t turkCargo) CreateCargo(data cargo.ShippingData) (*cargo.Response, error) {
 	var err error
-	var result *http.Response
+	var result *cargo.Response
 	switch t.GetServiceType() {
 	case cargo.SOAP:
 		if t.IsDomestic() {
@@ -36,12 +34,12 @@ func (t turkCargo) CreateCargo(data cargo.ShippingData) (*http.Response, error) 
 	return result, err
 }
 
-func (t turkCargo) WhereIsTheCargo(data cargo.ShippingData) (*http.Response, error) {
+func (t turkCargo) WhereIsTheCargo(data cargo.ShippingData) (*cargo.Response, error) {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (t turkCargo) CancelCargo(data cargo.ShippingData) (*http.Response, error) {
+func (t turkCargo) CancelCargo(data cargo.ShippingData) (*cargo.Response, error) {
 	//TODO implement me
 	panic("implement me")
 }

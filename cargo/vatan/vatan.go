@@ -1,8 +1,6 @@
 package vatan
 
 import (
-	"net/http"
-
 	"github.com/mstgnz/shipping/cargo/vatan/rest"
 	"github.com/mstgnz/shipping/cargo/vatan/soap"
 	"github.com/mstgnz/shipping/config"
@@ -16,9 +14,9 @@ func NewVatanCargo() cargo.Shipper {
 	return &vatanCargo{&cargo.Cargo{}}
 }
 
-func (v vatanCargo) CreateCargo(data cargo.ShippingData) (*http.Response, error) {
+func (v vatanCargo) CreateCargo(data cargo.ShippingData) (*cargo.Response, error) {
 	var err error
-	var result *http.Response
+	var result *cargo.Response
 	switch v.GetServiceType() {
 	case cargo.SOAP:
 		if v.IsDomestic() {
@@ -36,12 +34,12 @@ func (v vatanCargo) CreateCargo(data cargo.ShippingData) (*http.Response, error)
 	return result, err
 }
 
-func (v vatanCargo) WhereIsTheCargo(data cargo.ShippingData) (*http.Response, error) {
+func (v vatanCargo) WhereIsTheCargo(data cargo.ShippingData) (*cargo.Response, error) {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (v vatanCargo) CancelCargo(data cargo.ShippingData) (*http.Response, error) {
+func (v vatanCargo) CancelCargo(data cargo.ShippingData) (*cargo.Response, error) {
 	//TODO implement me
 	panic("implement me")
 }
