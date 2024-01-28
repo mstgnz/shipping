@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 
+	"github.com/mstgnz/shipping/cargo/mng/soap"
 	"github.com/mstgnz/shipping/util"
 )
 
@@ -14,6 +15,8 @@ func main() {
 		log.Println("Error: ", err)
 	}
 
-	log.Println(mng.CreateCargo(nil))
+	s := soap.SiparisGirisiDetayliV3{}
+
+	log.Println(mng.CreateCargo(s))
 
 }

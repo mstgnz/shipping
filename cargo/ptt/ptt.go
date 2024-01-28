@@ -14,17 +14,17 @@ func NewPTTCargo() cargo.Shipper {
 	return &pttCargo{&cargo.Cargo{}}
 }
 
-func (p pttCargo) CreateCargo(data map[string]any) (map[string]any, error) {
+func (p pttCargo) CreateCargo(data cargo.ShippingData) (map[string]any, error) {
 	var err error
 	var result map[string]any
-	if p.GetServiceType() == cargo.SOAP {
+	switch p.GetServiceType() {
+	case cargo.SOAP:
 		if p.IsDomestic() {
 			result, err = soap.CreateDomestic(p.GetCurrentEndpointAndCredential(), data)
 		} else {
 			result, err = soap.CreateAbroad(p.GetCurrentEndpointAndCredential(), data)
 		}
-	}
-	if p.GetServiceType() == cargo.REST {
+	case cargo.REST:
 		if p.IsDomestic() {
 			result, err = rest.CreateDomestic(p.GetCurrentEndpointAndCredential(), data)
 		} else {
@@ -34,12 +34,12 @@ func (p pttCargo) CreateCargo(data map[string]any) (map[string]any, error) {
 	return result, err
 }
 
-func (p pttCargo) WhereIsTheCargo(tracking string) (map[string]any, error) {
+func (p pttCargo) WhereIsTheCargo(data cargo.ShippingData) (map[string]any, error) {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (p pttCargo) CancelCargo(tracking string) (map[string]any, error) {
+func (p pttCargo) CancelCargo(data cargo.ShippingData) (map[string]any, error) {
 	//TODO implement me
 	panic("implement me")
 }
