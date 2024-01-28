@@ -4,6 +4,9 @@ import (
 	"context"
 )
 
+// ShippingData parameter placeholder
+type ShippingData interface{}
+
 type ServiceType string
 
 const (
@@ -18,6 +21,7 @@ const (
 	DEVELOPMENT Mode = "DEVELOPMENT"
 )
 
+// Shipper contains a common description of all cargo.
 type Shipper interface {
 	GetContext() context.Context
 	SetContext(ctx context.Context)
@@ -43,9 +47,9 @@ type Shipper interface {
 
 	GetCurrentEndpointAndCredential() Current
 
-	CreateCargo(data map[string]any) (map[string]any, error)
+	CreateCargo(data ShippingData) (map[string]any, error)
 
-	WhereIsTheCargo(tracking string) (map[string]any, error)
+	WhereIsTheCargo(data ShippingData) (map[string]any, error)
 
-	CancelCargo(tracking string) (map[string]any, error)
+	CancelCargo(data ShippingData) (map[string]any, error)
 }
