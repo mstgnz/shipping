@@ -14,8 +14,7 @@ func main() {
 	mng.SetServiceType(cargo.SOAP) // cargo.SOAP or cargo.REST
 	mng.SetMode(cargo.DEVELOPMENT) // cargo.PRODUCTION or cargo.DEVELOPMENT
 	mng.SetDomestic(true)          // True if the product is domestic, False if it is abroad
-	mng.AddEndpoint("test", "https://...", "https://...").SetActive(true)
-	mng.AddEndpoint("live", "https://...", "https://...")
+	mng.AddEndpoint("mng", "http://service.mngkargo.com.tr/musterikargosiparis/musterikargosiparis.asmx?WSDL", "http://service.mngkargo.com.tr/tservis/musterikargosiparis.asmx?WSDL").SetActive(true)
 	mng.AddCredential("test user", "username", "password").SetActive(true)
 	mng.AddCredential("live user", "username", "password")
 
@@ -30,6 +29,6 @@ func main() {
 		log.Println("Create Error: ", err)
 	}
 
-	log.Println(createCargo)
+	log.Println(createCargo.Body)
 
 }
