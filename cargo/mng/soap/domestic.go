@@ -15,9 +15,9 @@ type SiparisGirisiDetayliV3 struct {
 	PPrKiymet            string `xml:"pPrKiymet"`
 	PChBarkod            string `xml:"pChBarkod"`
 	PGonderiHizmetSekli  string `xml:"pGonderiHizmetSekli"`
-	PTeslimSekli         string `xml:"pTeslimSekli"`
-	PFlAlSms             string `xml:"pFlAlSms"`
-	PFlGnSms             string `xml:"pFlGnSms"`
+	PTeslimSekli         int    `xml:"pTeslimSekli"`
+	PFlAlSms             int    `xml:"pFlAlSms"`
+	PFlGnSms             int    `xml:"pFlGnSms"`
 	PKargoParcaList      string `xml:"pKargoParcaList"`
 	PAliciMusteriAdi     string `xml:"pAliciMusteriAdi"`
 	PChSiparisNo         string `xml:"pChSiparisNo"`
@@ -29,7 +29,7 @@ type SiparisGirisiDetayliV3 struct {
 	PChTelCep            string `xml:"pChTelCep"`
 	PChEmail             string `xml:"pChEmail"`
 	PMalBedeliOdemeSekli string `xml:"pMalBedeliOdemeSekli"`
-	PFlKapidaOdeme       string `xml:"pFlKapidaOdeme"`
+	PFlKapidaOdeme       int    `xml:"pFlKapidaOdeme"`
 	PChIcerik            string `xml:"pChIcerik"`
 	PAliciMusteriMngNo   string `xml:"pAliciMusteriMngNo"`
 	PAliciMusteriBayiNo  string `xml:"pAliciMusteriBayiNo"`
@@ -64,6 +64,7 @@ type KargoBilgileriByReferans struct {
 type MusteriSiparisIptal struct {
 	login
 	PMusteriSiparisNo string `xml:"pMusteriSiparisNo"`
+	PSiparisTarihi    string `xml:"pSiparisTarihi"`
 }
 
 // MusteriTeslimatIptalIstegi Cancel shipping - if the product has been shipped
@@ -71,24 +72,37 @@ type MusteriSiparisIptal struct {
 type MusteriTeslimatIptalIstegi struct {
 	login
 	PMusteriSiparisNo string `xml:"pMusteriSiparisNo"`
+	PIslemAciklama    string `xml:"pIslemAciklama"`
 }
 
 // MNGGonderiBarkod http://service.mngkargo.com.tr/musterikargosiparis/musterikargosiparis.asmx?op=MNGGonderiBarkod
 type MNGGonderiBarkod struct {
 	login
-	PChSiparisNo             string `xml:"pChSiparisNo"`
-	PChIrsaliyeNo            string `xml:"pChIrsaliyeNo"`
-	ReferansNo               string `xml:"ReferansNo"`
-	IrsaliyeNo               string `xml:"IrsaliyeNo"`
-	OutBarkodType            string `xml:"OutBarkodType"`
-	PFlKapidaTahsilat        string `xml:"pFlKapidaTahsilat"`
-	FlKapidaTahsilat         string `xml:"FlKapidaTahsilat"`
-	HatadaReferansBarkoduBas string `xml:"HatadaReferansBarkoduBas"`
-	UrunBedeli               string `xml:"UrunBedeli"`
-	ChMesaj                  string `xml:"ChMesaj"`
-	EkString1                string `xml:"EkString1"`
-	EkString2                string `xml:"EkString2"`
-	EkString3                string `xml:"EkString3"`
-	EkString4                string `xml:"EkString4"`
-	ParcaBilgi               string `xml:"ParcaBilgi"`
+	IrsaliyeNo               string     `xml:"IrsaliyeNo"`
+	OutBarkodType            string     `xml:"OutBarkodType"`
+	FlKapidaTahsilat         string     `xml:"FlKapidaTahsilat"`
+	UrunBedeli               string     `xml:"UrunBedeli"`
+	ChMesaj                  string     `xml:"ChMesaj"`
+	PChSiparisNo             string     `xml:"pChSiparisNo"`
+	PChIrsaliyeNo            string     `xml:"pChIrsaliyeNo"`
+	ReferansNo               string     `xml:"ReferansNo"`
+	PFlKapidaTahsilat        string     `xml:"pFlKapidaTahsilat"`
+	EkString1                string     `xml:"EkString1"`
+	EkString2                string     `xml:"EkString2"`
+	EkString3                string     `xml:"EkString3"`
+	EkString4                string     `xml:"EkString4"`
+	HatadaReferansBarkoduBas string     `xml:"HatadaReferansBarkoduBas"`
+	ParcaBilgi               ParcaBilgi `xml:"ParcaBilgi"`
+}
+
+type ParcaBilgi struct {
+	GonderiParca []GonderiParca `xml:"GonderiParca"`
+}
+
+type GonderiParca struct {
+	Kg          int    `xml:"Kg"`
+	Desi        int    `xml:"Desi"`
+	Adet        int    `xml:"Adet"`
+	Icerik      string `xml:"Icerik"`
+	ParcaBarkod string `xml:"ParcaBarkod"`
 }
