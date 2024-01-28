@@ -1,6 +1,8 @@
 package iyi
 
 import (
+	"net/http"
+
 	"github.com/mstgnz/shipping/cargo/iyi/rest"
 	"github.com/mstgnz/shipping/cargo/iyi/soap"
 	"github.com/mstgnz/shipping/config"
@@ -14,9 +16,9 @@ func NewIyiCargo() cargo.Shipper {
 	return &iyiCargo{&cargo.Cargo{}}
 }
 
-func (i iyiCargo) CreateCargo(data cargo.ShippingData) (map[string]any, error) {
+func (i iyiCargo) CreateCargo(data cargo.ShippingData) (*http.Response, error) {
 	var err error
-	var result map[string]any
+	var result *http.Response
 	switch i.GetServiceType() {
 	case cargo.SOAP:
 		if i.IsDomestic() {
@@ -34,12 +36,12 @@ func (i iyiCargo) CreateCargo(data cargo.ShippingData) (map[string]any, error) {
 	return result, err
 }
 
-func (i iyiCargo) WhereIsTheCargo(data cargo.ShippingData) (map[string]any, error) {
+func (i iyiCargo) WhereIsTheCargo(data cargo.ShippingData) (*http.Response, error) {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (i iyiCargo) CancelCargo(data cargo.ShippingData) (map[string]any, error) {
+func (i iyiCargo) CancelCargo(data cargo.ShippingData) (*http.Response, error) {
 	//TODO implement me
 	panic("implement me")
 }

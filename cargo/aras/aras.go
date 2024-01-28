@@ -1,6 +1,8 @@
 package aras
 
 import (
+	"net/http"
+
 	"github.com/mstgnz/shipping/cargo/aras/rest"
 	"github.com/mstgnz/shipping/cargo/aras/soap"
 	"github.com/mstgnz/shipping/config"
@@ -14,9 +16,9 @@ func NewArasCargo() cargo.Shipper {
 	return &arasCargo{&cargo.Cargo{}}
 }
 
-func (a arasCargo) CreateCargo(data cargo.ShippingData) (map[string]any, error) {
+func (a arasCargo) CreateCargo(data cargo.ShippingData) (*http.Response, error) {
 	var err error
-	var result map[string]any
+	var result *http.Response
 	switch a.GetServiceType() {
 	case cargo.SOAP:
 		if a.IsDomestic() {
@@ -34,12 +36,12 @@ func (a arasCargo) CreateCargo(data cargo.ShippingData) (map[string]any, error) 
 	return result, err
 }
 
-func (a arasCargo) WhereIsTheCargo(data cargo.ShippingData) (map[string]any, error) {
+func (a arasCargo) WhereIsTheCargo(data cargo.ShippingData) (*http.Response, error) {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (a arasCargo) CancelCargo(data cargo.ShippingData) (map[string]any, error) {
+func (a arasCargo) CancelCargo(data cargo.ShippingData) (*http.Response, error) {
 	//TODO implement me
 	panic("implement me")
 }

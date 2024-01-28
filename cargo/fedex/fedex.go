@@ -1,6 +1,8 @@
 package fedex
 
 import (
+	"net/http"
+
 	"github.com/mstgnz/shipping/cargo/fedex/rest"
 	"github.com/mstgnz/shipping/cargo/fedex/soap"
 	"github.com/mstgnz/shipping/config"
@@ -14,9 +16,9 @@ func NewFedexCargo() cargo.Shipper {
 	return &fedexCargo{&cargo.Cargo{}}
 }
 
-func (f fedexCargo) CreateCargo(data cargo.ShippingData) (map[string]any, error) {
+func (f fedexCargo) CreateCargo(data cargo.ShippingData) (*http.Response, error) {
 	var err error
-	var result map[string]any
+	var result *http.Response
 	switch f.GetServiceType() {
 	case cargo.SOAP:
 		if f.IsDomestic() {
@@ -34,12 +36,12 @@ func (f fedexCargo) CreateCargo(data cargo.ShippingData) (map[string]any, error)
 	return result, err
 }
 
-func (f fedexCargo) WhereIsTheCargo(data cargo.ShippingData) (map[string]any, error) {
+func (f fedexCargo) WhereIsTheCargo(data cargo.ShippingData) (*http.Response, error) {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (f fedexCargo) CancelCargo(data cargo.ShippingData) (map[string]any, error) {
+func (f fedexCargo) CancelCargo(data cargo.ShippingData) (*http.Response, error) {
 	//TODO implement me
 	panic("implement me")
 }

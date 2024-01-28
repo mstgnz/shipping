@@ -1,6 +1,8 @@
 package tnt
 
 import (
+	"net/http"
+
 	"github.com/mstgnz/shipping/cargo/tnt/rest"
 	"github.com/mstgnz/shipping/cargo/tnt/soap"
 	"github.com/mstgnz/shipping/config"
@@ -14,9 +16,9 @@ func NewTNTCargo() cargo.Shipper {
 	return &tntCargo{&cargo.Cargo{}}
 }
 
-func (t tntCargo) CreateCargo(data cargo.ShippingData) (map[string]any, error) {
+func (t tntCargo) CreateCargo(data cargo.ShippingData) (*http.Response, error) {
 	var err error
-	var result map[string]any
+	var result *http.Response
 	switch t.GetServiceType() {
 	case cargo.SOAP:
 		if t.IsDomestic() {
@@ -34,12 +36,12 @@ func (t tntCargo) CreateCargo(data cargo.ShippingData) (map[string]any, error) {
 	return result, err
 }
 
-func (t tntCargo) WhereIsTheCargo(data cargo.ShippingData) (map[string]any, error) {
+func (t tntCargo) WhereIsTheCargo(data cargo.ShippingData) (*http.Response, error) {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (t tntCargo) CancelCargo(data cargo.ShippingData) (map[string]any, error) {
+func (t tntCargo) CancelCargo(data cargo.ShippingData) (*http.Response, error) {
 	//TODO implement me
 	panic("implement me")
 }

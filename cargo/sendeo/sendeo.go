@@ -1,6 +1,8 @@
 package sendeo
 
 import (
+	"net/http"
+
 	"github.com/mstgnz/shipping/cargo/sendeo/rest"
 	"github.com/mstgnz/shipping/cargo/sendeo/soap"
 	"github.com/mstgnz/shipping/config"
@@ -14,9 +16,9 @@ func NewSendeoCargo() cargo.Shipper {
 	return &sendeoCargo{&cargo.Cargo{}}
 }
 
-func (s sendeoCargo) CreateCargo(data cargo.ShippingData) (map[string]any, error) {
+func (s sendeoCargo) CreateCargo(data cargo.ShippingData) (*http.Response, error) {
 	var err error
-	var result map[string]any
+	var result *http.Response
 	switch s.GetServiceType() {
 	case cargo.SOAP:
 		if s.IsDomestic() {
@@ -34,12 +36,12 @@ func (s sendeoCargo) CreateCargo(data cargo.ShippingData) (map[string]any, error
 	return result, err
 }
 
-func (s sendeoCargo) WhereIsTheCargo(data cargo.ShippingData) (map[string]any, error) {
+func (s sendeoCargo) WhereIsTheCargo(data cargo.ShippingData) (*http.Response, error) {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (s sendeoCargo) CancelCargo(data cargo.ShippingData) (map[string]any, error) {
+func (s sendeoCargo) CancelCargo(data cargo.ShippingData) (*http.Response, error) {
 	//TODO implement me
 	panic("implement me")
 }
