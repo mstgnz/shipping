@@ -17,5 +17,26 @@ It can be annoying to deal with implementing each of the shipping integrations o
 | [UPS](https://www.ups.com.tr/)              | :white_check_mark: | :white_check_mark: |
 | [YURTİÇİ](https://www.yurticikargo.com/)    | :white_check_mark: | :white_check_mark: |
 
-
 Note: Integration will be made as the documentation of the relevant companies is accessed.
+
+
+## Check List
+- [ ] ARAS Cargo
+- [ ] DHL Cargo
+- [ ] FEDEX Cargo
+- [ ] MNG Cargo
+- [ ] PTT Cargo
+- [ ] SENDEO Cargo
+- [ ] SÜRAT Cargo
+- [ ] TNT Cargo
+- [ ] KARGO Türk Cargo
+- [ ] UPS Cargo
+- [ ] YURTİÇİ Cargo
+
+
+## Contributing
+This project is open-source, and contributions are welcome. Feel free to contribute or provide feedback of any kind.
+
+
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
