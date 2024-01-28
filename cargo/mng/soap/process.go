@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"encoding/xml"
 	"errors"
-	"io"
 	"net/http"
 
 	"github.com/mstgnz/shipping/config"
@@ -31,9 +30,9 @@ func CreateDomestic(current cargo.Current, data cargo.ShippingData) (*http.Respo
 	}
 
 	resp, err := http.Post(current.Endpoint.GetDevelopment(), "application/x-www-form-urlencoded", bytes.NewBuffer(xmlData))
-	defer func(Body io.ReadCloser) {
-		_ = Body.Close()
-	}(resp.Body)
+	defer func() {
+		_ = resp.Body.Close()
+	}()
 
 	return resp, err
 }
