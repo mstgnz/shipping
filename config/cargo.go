@@ -19,11 +19,11 @@ import (
 // It helps in distinguishing between shipments within the country and those abroad.
 type Cargo struct {
 	ctx         context.Context
-	serviceType ServiceType  // Soap or Rest
-	mode        Mode         // Production or Development
-	isDomestic  bool         // True if the product is domestic, False if it is abroad
-	endpoints   []Endpoint   // List of available endpoints
-	credentials []Credential // List of available credentials
+	serviceType ServiceType   // Soap or Rest
+	mode        Mode          // Production or Development
+	isDomestic  bool          // True if the product is domestic, False if it is abroad
+	endpoints   []*Endpoint   // List of available endpoints
+	credentials []*Credential // List of available credentials
 }
 
 // GetContext retrieves the context associated with the Cargo.
@@ -71,27 +71,29 @@ func (c *Cargo) SetDomestic(isDomestic bool) {
 }
 
 // GetEndpoints retrieves the list of endpoints in the Cargo.
-func (c *Cargo) GetEndpoints() []Endpoint {
+func (c *Cargo) GetEndpoints() []*Endpoint {
 	return c.endpoints
 }
 
 // GetEndpoint retrieves a specific endpoint by its title.
-func (c *Cargo) GetEndpoint(title string) Endpoint {
+func (c *Cargo) GetEndpoint(title string) *Endpoint {
 	for _, endpoint := range c.endpoints {
 		if title == endpoint.title {
 			return endpoint
 		}
 	}
-	return Endpoint{}
+	return nil
 }
 
 // AddEndpoint adds a new endpoint to the Cargo with the specified title, production, and development URLs.
-func (c *Cargo) AddEndpoint(title, production, development string) {
-	c.endpoints = append(c.endpoints, Endpoint{title: title, production: production, development: development})
+func (c *Cargo) AddEndpoint(title, production, development string) *Endpoint {
+	endpoint := &Endpoint{title: title, production: production, development: development}
+	c.endpoints = append(c.endpoints, endpoint)
+	return endpoint
 }
 
 // DelEndpoint deletes a specific endpoint by its title.
-func (c *Cargo) DelEndpoint(title string) []Endpoint {
+func (c *Cargo) DelEndpoint(title string) []*Endpoint {
 	for index, endpoint := range c.endpoints {
 		if title == endpoint.title {
 			c.endpoints = append(c.endpoints[:index], c.endpoints[index+1:]...)
@@ -101,27 +103,29 @@ func (c *Cargo) DelEndpoint(title string) []Endpoint {
 }
 
 // GetCredentials retrieves the list of credentials in the Cargo.
-func (c *Cargo) GetCredentials() []Credential {
+func (c *Cargo) GetCredentials() []*Credential {
 	return c.credentials
 }
 
 // GetCredential retrieves a specific credential by its title.
-func (c *Cargo) GetCredential(title string) Credential {
+func (c *Cargo) GetCredential(title string) *Credential {
 	for _, credential := range c.credentials {
 		if title == credential.title {
 			return credential
 		}
 	}
-	return Credential{}
+	return nil
 }
 
 // AddCredential adds a new credential to the Cargo with the specified title, username, and password.
-func (c *Cargo) AddCredential(title, username, password string) {
-	c.credentials = append(c.credentials, Credential{title: title, username: username, password: password})
+func (c *Cargo) AddCredential(title, username, password string) *Credential {
+	credential := &Credential{title: title, username: username, password: password}
+	c.credentials = append(c.credentials, credential)
+	return credential
 }
 
 // DelCredential deletes a specific credential by its title.
-func (c *Cargo) DelCredential(title string) []Credential {
+func (c *Cargo) DelCredential(title string) []*Credential {
 	for index, credential := range c.credentials {
 		if title == credential.title {
 			c.credentials = append(c.credentials[:index], c.credentials[index+1:]...)

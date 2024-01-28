@@ -1,6 +1,7 @@
 package cargo
 
+// Current endpoint and credential
 type Current struct {
-	Endpoint   Endpoint
-	Credential Credential
+	Endpoint   *Endpoint
+	Credential *Credential
 }
