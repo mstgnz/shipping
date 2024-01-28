@@ -2,6 +2,7 @@ package cargo
 
 import (
 	"context"
+	"net/http"
 )
 
 // ShippingData parameter placeholder
@@ -47,9 +48,9 @@ type Shipper interface {
 
 	GetCurrentEndpointAndCredential() Current
 
-	CreateCargo(data ShippingData) (map[string]any, error)
+	CreateCargo(data ShippingData) (*http.Response, error)
 
-	WhereIsTheCargo(data ShippingData) (map[string]any, error)
+	WhereIsTheCargo(data ShippingData) (*http.Response, error)
 
-	CancelCargo(data ShippingData) (map[string]any, error)
+	CancelCargo(data ShippingData) (*http.Response, error)
 }

@@ -1,6 +1,8 @@
 package dhl
 
 import (
+	"net/http"
+
 	"github.com/mstgnz/shipping/cargo/dhl/rest"
 	"github.com/mstgnz/shipping/cargo/dhl/soap"
 	"github.com/mstgnz/shipping/config"
@@ -14,9 +16,9 @@ func NewDHLCargo() cargo.Shipper {
 	return &dhlCargo{&cargo.Cargo{}}
 }
 
-func (d dhlCargo) CreateCargo(data cargo.ShippingData) (map[string]any, error) {
+func (d dhlCargo) CreateCargo(data cargo.ShippingData) (*http.Response, error) {
 	var err error
-	var result map[string]any
+	var result *http.Response
 	switch d.GetServiceType() {
 	case cargo.SOAP:
 		if d.IsDomestic() {
@@ -34,12 +36,12 @@ func (d dhlCargo) CreateCargo(data cargo.ShippingData) (map[string]any, error) {
 	return result, err
 }
 
-func (d dhlCargo) WhereIsTheCargo(data cargo.ShippingData) (map[string]any, error) {
+func (d dhlCargo) WhereIsTheCargo(data cargo.ShippingData) (*http.Response, error) {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (d dhlCargo) CancelCargo(data cargo.ShippingData) (map[string]any, error) {
+func (d dhlCargo) CancelCargo(data cargo.ShippingData) (*http.Response, error) {
 	//TODO implement me
 	panic("implement me")
 }
