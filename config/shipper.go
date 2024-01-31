@@ -45,7 +45,7 @@ type Shipper interface {
 	AddCredential(title, username, password string) *Credential
 	DelCredential(title string) []*Credential
 
-	GetCurrentEndpointAndCredential() Current
+	GetCurrent() Current
 
 	CreateCargo(data ShippingData) (*Response, error)
 

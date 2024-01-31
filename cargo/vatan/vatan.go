@@ -20,15 +20,15 @@ func (v vatanCargo) CreateCargo(data cargo.ShippingData) (*cargo.Response, error
 	switch v.GetServiceType() {
 	case cargo.SOAP:
 		if v.IsDomestic() {
-			result, err = soap.CreateDomestic(v.GetCurrentEndpointAndCredential(), data)
+			result, err = soap.CreateDomestic(v.GetCurrent(), data)
 		} else {
-			result, err = soap.CreateAbroad(v.GetCurrentEndpointAndCredential(), data)
+			result, err = soap.CreateAbroad(v.GetCurrent(), data)
 		}
 	case cargo.REST:
 		if v.IsDomestic() {
-			result, err = rest.CreateDomestic(v.GetCurrentEndpointAndCredential(), data)
+			result, err = rest.CreateDomestic(v.GetCurrent(), data)
 		} else {
-			result, err = rest.CreateAbroad(v.GetCurrentEndpointAndCredential(), data)
+			result, err = rest.CreateAbroad(v.GetCurrent(), data)
 		}
 	}
 	return result, err
