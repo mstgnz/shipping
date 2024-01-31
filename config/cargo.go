@@ -134,8 +134,8 @@ func (c *Cargo) DelCredential(title string) []*Credential {
 	return c.credentials
 }
 
-// GetCurrentEndpointAndCredential return current endpoint and credential
-func (c *Cargo) GetCurrentEndpointAndCredential() Current {
+// GetCurrent return current endpoint and credential
+func (c *Cargo) GetCurrent() Current {
 	var current Current
 	for _, credential := range c.credentials {
 		if credential.isActive {

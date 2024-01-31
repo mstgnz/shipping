@@ -1,5 +1,9 @@
 package soap
 
+import (
+	"encoding/xml"
+)
+
 type login struct {
 	PKullaniciAdi string `xml:"pKullaniciAdi"`
 	PSifre        string `xml:"pSifre"`
@@ -10,6 +14,7 @@ type login struct {
 
 // SiparisGirisiDetayliV3 http://service.mngkargo.com.tr/musterikargosiparis/musterikargosiparis.asmx?op=SiparisGirisiDetayliV3
 type SiparisGirisiDetayliV3 struct {
+	XMLName xml.Name `xml:"http://tempuri.org/ SiparisGirisiDetayliV3"`
 	login
 	PChIrsaliyeNo        string `xml:"pChIrsaliyeNo"`
 	PPrKiymet            string `xml:"pPrKiymet"`

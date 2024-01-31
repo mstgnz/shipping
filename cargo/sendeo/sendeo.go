@@ -20,15 +20,15 @@ func (s sendeoCargo) CreateCargo(data cargo.ShippingData) (*cargo.Response, erro
 	switch s.GetServiceType() {
 	case cargo.SOAP:
 		if s.IsDomestic() {
-			result, err = soap.CreateDomestic(s.GetCurrentEndpointAndCredential(), data)
+			result, err = soap.CreateDomestic(s.GetCurrent(), data)
 		} else {
-			result, err = soap.CreateAbroad(s.GetCurrentEndpointAndCredential(), data)
+			result, err = soap.CreateAbroad(s.GetCurrent(), data)
 		}
 	case cargo.REST:
 		if s.IsDomestic() {
-			result, err = rest.CreateDomestic(s.GetCurrentEndpointAndCredential(), data)
+			result, err = rest.CreateDomestic(s.GetCurrent(), data)
 		} else {
-			result, err = rest.CreateAbroad(s.GetCurrentEndpointAndCredential(), data)
+			result, err = rest.CreateAbroad(s.GetCurrent(), data)
 		}
 	}
 	return result, err

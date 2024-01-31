@@ -20,15 +20,15 @@ func (a arasCargo) CreateCargo(data cargo.ShippingData) (*cargo.Response, error)
 	switch a.GetServiceType() {
 	case cargo.SOAP:
 		if a.IsDomestic() {
-			result, err = soap.CreateDomestic(a.GetCurrentEndpointAndCredential(), data)
+			result, err = soap.CreateDomestic(a.GetCurrent(), data)
 		} else {
-			result, err = soap.CreateAbroad(a.GetCurrentEndpointAndCredential(), data)
+			result, err = soap.CreateAbroad(a.GetCurrent(), data)
 		}
 	case cargo.REST:
 		if a.IsDomestic() {
-			result, err = rest.CreateDomestic(a.GetCurrentEndpointAndCredential(), data)
+			result, err = rest.CreateDomestic(a.GetCurrent(), data)
 		} else {
-			result, err = rest.CreateAbroad(a.GetCurrentEndpointAndCredential(), data)
+			result, err = rest.CreateAbroad(a.GetCurrent(), data)
 		}
 	}
 	return result, err

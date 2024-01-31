@@ -20,15 +20,15 @@ func (p pttCargo) CreateCargo(data cargo.ShippingData) (*cargo.Response, error) 
 	switch p.GetServiceType() {
 	case cargo.SOAP:
 		if p.IsDomestic() {
-			result, err = soap.CreateDomestic(p.GetCurrentEndpointAndCredential(), data)
+			result, err = soap.CreateDomestic(p.GetCurrent(), data)
 		} else {
-			result, err = soap.CreateAbroad(p.GetCurrentEndpointAndCredential(), data)
+			result, err = soap.CreateAbroad(p.GetCurrent(), data)
 		}
 	case cargo.REST:
 		if p.IsDomestic() {
-			result, err = rest.CreateDomestic(p.GetCurrentEndpointAndCredential(), data)
+			result, err = rest.CreateDomestic(p.GetCurrent(), data)
 		} else {
-			result, err = rest.CreateAbroad(p.GetCurrentEndpointAndCredential(), data)
+			result, err = rest.CreateAbroad(p.GetCurrent(), data)
 		}
 	}
 	return result, err

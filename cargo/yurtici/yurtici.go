@@ -20,15 +20,15 @@ func (y yurticiCargo) CreateCargo(data cargo.ShippingData) (*cargo.Response, err
 	switch y.GetServiceType() {
 	case cargo.SOAP:
 		if y.IsDomestic() {
-			result, err = soap.CreateDomestic(y.GetCurrentEndpointAndCredential(), data)
+			result, err = soap.CreateDomestic(y.GetCurrent(), data)
 		} else {
-			result, err = soap.CreateAbroad(y.GetCurrentEndpointAndCredential(), data)
+			result, err = soap.CreateAbroad(y.GetCurrent(), data)
 		}
 	case cargo.REST:
 		if y.IsDomestic() {
-			result, err = rest.CreateDomestic(y.GetCurrentEndpointAndCredential(), data)
+			result, err = rest.CreateDomestic(y.GetCurrent(), data)
 		} else {
-			result, err = rest.CreateAbroad(y.GetCurrentEndpointAndCredential(), data)
+			result, err = rest.CreateAbroad(y.GetCurrent(), data)
 		}
 	}
 	return result, err
