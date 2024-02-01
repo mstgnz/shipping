@@ -11,6 +11,10 @@ import (
 func main() {
 
 	mng, err := util.NewProviderByName("mng")
+	if err != nil {
+		log.Fatalln("Init Error: ", err)
+	}
+
 	mng.SetServiceType(cargo.SOAP) // cargo.SOAP or cargo.REST
 	mng.SetMode(cargo.DEVELOPMENT) // cargo.PRODUCTION or cargo.DEVELOPMENT
 	mng.SetDomestic(true)          // True if the product is domestic, False if it is abroad
@@ -18,10 +22,16 @@ func main() {
 	mng.AddCredential("test user", "username", "password").SetActive(true)
 	mng.AddCredential("live user", "username", "password")
 
-	if err != nil {
-		log.Println("Init Error: ", err)
-	}
+	// You can use the CreateCargo either as a struct or as a json byte.
+	// first example use with struct
+	structExample(mng)
 
+	// second example use with json byte
+	//jsonExample(mng)
+
+}
+
+func structExample(mng cargo.Shipper) {
 	order := soap.SiparisGirisiDetayliV3{}
 
 	// this is not necessary because the already defined user information will be set in the background.
@@ -34,5 +44,54 @@ func main() {
 	}
 
 	log.Println("Body: ", string(createResp.Data))
+}
 
+func jsonExample(mng cargo.Shipper) {
+	jsonData := []byte(`{
+      "pKullaniciAdi":"",
+      "pSifre":"",
+      "WsUserName":"json datası bu",
+      "WsPassword":"",
+      "pMusteriNo":"",
+      "pChIrsaliyeNo":"",
+      "pPrKiymet":"",
+      "pChBarkod":"",
+      "pGonderiHizmetSekli":"",
+      "pTeslimSekli":0,
+      "pFlAlSms":0,
+      "pFlGnSms":0,
+      "pKargoParcaList":"",
+      "pAliciMusteriAdi":"",
+      "pChSiparisNo":"",
+      "pLuOdemeSekli":"",
+      "pFlAdresFarkli":"",
+      "pChIl":"",
+      "pChIlce":"",
+      "pChAdres":"",
+      "pChTelCep":"",
+      "pChEmail":"",
+      "pMalBedeliOdemeSekli":"",
+      "pFlKapidaOdeme":0,
+      "pChIcerik":"",
+      "pAliciMusteriMngNo":"",
+      "pAliciMusteriBayiNo":"",
+      "pChSemt":"",
+      "pChMahalle":"",
+      "pChMeydanBulvar":"",
+      "pChCadde":"",
+      "pChSokak":"",
+      "pChFax":"",
+      "pChVergiDairesi":"",
+      "pChVergiNumarasi":"",
+      "pPlatformKisaAdi":"",
+      "pPlatformSatisKodu":"",
+      "pChTelEv":"",
+      "pChTelIs":""}`)
+
+	createResp, err := mng.CreateCargo(jsonData)
+	if err != nil {
+		log.Println("Create Error: ", err)
+	}
+
+	log.Println("Body: ", string(createResp.Data))
 }

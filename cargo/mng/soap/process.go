@@ -2,8 +2,10 @@ package soap
 
 import (
 	"bytes"
+	"encoding/json"
 	"encoding/xml"
 	"errors"
+	"fmt"
 	"io"
 	"net/http"
 
@@ -20,9 +22,19 @@ func CreateAbroad(current cargo.Current, data cargo.ShippingData) (*cargo.Respon
 // LIVE REQUEST: https://service.mngkargo.com.tr/musterikargosiparis/musterikargosiparis.asmx?WSDL
 func CreateDomestic(current cargo.Current, data cargo.ShippingData) (*cargo.Response, error) {
 
-	orderData, ok := data.(SiparisGirisiDetayliV3)
-	if !ok {
-		return nil, errors.New("data parameter not a `SiparisGirisiDetayliV3` type")
+	orderData := SiparisGirisiDetayliV3{}
+	switch content := data.(type) {
+	case SiparisGirisiDetayliV3:
+		orderData = content
+	case []byte:
+		if !json.Valid(content) {
+			return nil, errors.New("json []byte is not valid")
+		}
+		if err := json.Unmarshal(content, &orderData); err != nil {
+			return nil, err
+		}
+	default:
+		return nil, fmt.Errorf("unsupported data type: %T", data)
 	}
 
 	orderData.PKullaniciAdi = current.Credential.GetUsername()

@@ -5,109 +5,109 @@ import (
 )
 
 type login struct {
-	PKullaniciAdi string `xml:"pKullaniciAdi"`
-	PSifre        string `xml:"pSifre"`
-	WsUserName    string `xml:"WsUserName"`
-	WsPassword    string `xml:"WsPassword"`
-	PMusteriNo    string `xml:"pMusteriNo"`
+	PKullaniciAdi string `xml:"pKullaniciAdi" json:"pKullaniciAdi"`
+	PSifre        string `xml:"pSifre" json:"pSifre"`
+	WsUserName    string `xml:"WsUserName" json:"WsUserName"`
+	WsPassword    string `xml:"WsPassword" json:"WsPassword"`
+	PMusteriNo    string `xml:"pMusteriNo" json:"pMusteriNo"`
 }
 
 // SiparisGirisiDetayliV3 http://service.mngkargo.com.tr/musterikargosiparis/musterikargosiparis.asmx?op=SiparisGirisiDetayliV3
 type SiparisGirisiDetayliV3 struct {
 	XMLName xml.Name `xml:"http://tempuri.org/ SiparisGirisiDetayliV3"`
 	login
-	PChIrsaliyeNo        string `xml:"pChIrsaliyeNo"`
-	PPrKiymet            string `xml:"pPrKiymet"`
-	PChBarkod            string `xml:"pChBarkod"`
-	PGonderiHizmetSekli  string `xml:"pGonderiHizmetSekli"`
-	PTeslimSekli         int    `xml:"pTeslimSekli"`
-	PFlAlSms             int    `xml:"pFlAlSms"`
-	PFlGnSms             int    `xml:"pFlGnSms"`
-	PKargoParcaList      string `xml:"pKargoParcaList"`
-	PAliciMusteriAdi     string `xml:"pAliciMusteriAdi"`
-	PChSiparisNo         string `xml:"pChSiparisNo"`
-	PLuOdemeSekli        string `xml:"pLuOdemeSekli"`
-	PFlAdresFarkli       string `xml:"pFlAdresFarkli"`
-	PChIl                string `xml:"pChIl"`
-	PChIlce              string `xml:"pChIlce"`
-	PChAdres             string `xml:"pChAdres"`
-	PChTelCep            string `xml:"pChTelCep"`
-	PChEmail             string `xml:"pChEmail"`
-	PMalBedeliOdemeSekli string `xml:"pMalBedeliOdemeSekli"`
-	PFlKapidaOdeme       int    `xml:"pFlKapidaOdeme"`
-	PChIcerik            string `xml:"pChIcerik"`
-	PAliciMusteriMngNo   string `xml:"pAliciMusteriMngNo"`
-	PAliciMusteriBayiNo  string `xml:"pAliciMusteriBayiNo"`
-	PChSemt              string `xml:"pChSemt"`
-	PChMahalle           string `xml:"pChMahalle"`
-	PChMeydanBulvar      string `xml:"pChMeydanBulvar"`
-	PChCadde             string `xml:"pChCadde"`
-	PChSokak             string `xml:"pChSokak"`
-	PChFax               string `xml:"pChFax"`
-	PChVergiDairesi      string `xml:"pChVergiDairesi"`
-	PChVergiNumarasi     string `xml:"pChVergiNumarasi"`
-	PPlatformKisaAdi     string `xml:"pPlatformKisaAdi"`
-	PPlatformSatisKodu   string `xml:"pPlatformSatisKodu"`
-	PChTelEv             string `xml:"pChTelEv"`
-	PChTelIs             string `xml:"pChTelIs"`
+	PChIrsaliyeNo        string `xml:"pChIrsaliyeNo" json:"pChIrsaliyeNo"`
+	PPrKiymet            string `xml:"pPrKiymet" json:"pPrKiymet"`
+	PChBarkod            string `xml:"pChBarkod" json:"pChBarkod"`
+	PGonderiHizmetSekli  string `xml:"pGonderiHizmetSekli" json:"pGonderiHizmetSekli"`
+	PTeslimSekli         int    `xml:"pTeslimSekli" json:"pTeslimSekli"`
+	PFlAlSms             int    `xml:"pFlAlSms" json:"pFlAlSms"`
+	PFlGnSms             int    `xml:"pFlGnSms" json:"pFlGnSms"`
+	PKargoParcaList      string `xml:"pKargoParcaList" json:"pKargoParcaList"`
+	PAliciMusteriAdi     string `xml:"pAliciMusteriAdi" json:"pAliciMusteriAdi"`
+	PChSiparisNo         string `xml:"pChSiparisNo" json:"pChSiparisNo"`
+	PLuOdemeSekli        string `xml:"pLuOdemeSekli" json:"pLuOdemeSekli"`
+	PFlAdresFarkli       string `xml:"pFlAdresFarkli" json:"pFlAdresFarkli"`
+	PChIl                string `xml:"pChIl" json:"pChIl"`
+	PChIlce              string `xml:"pChIlce" json:"pChIlce"`
+	PChAdres             string `xml:"pChAdres" json:"pChAdres"`
+	PChTelCep            string `xml:"pChTelCep" json:"pChTelCep"`
+	PChEmail             string `xml:"pChEmail" json:"pChEmail"`
+	PMalBedeliOdemeSekli string `xml:"pMalBedeliOdemeSekli" json:"pMalBedeliOdemeSekli"`
+	PFlKapidaOdeme       int    `xml:"pFlKapidaOdeme" json:"pFlKapidaOdeme"`
+	PChIcerik            string `xml:"pChIcerik" json:"pChIcerik"`
+	PAliciMusteriMngNo   string `xml:"pAliciMusteriMngNo" json:"pAliciMusteriMngNo"`
+	PAliciMusteriBayiNo  string `xml:"pAliciMusteriBayiNo" json:"pAliciMusteriBayiNo"`
+	PChSemt              string `xml:"pChSemt" json:"pChSemt"`
+	PChMahalle           string `xml:"pChMahalle" json:"pChMahalle"`
+	PChMeydanBulvar      string `xml:"pChMeydanBulvar" json:"pChMeydanBulvar"`
+	PChCadde             string `xml:"pChCadde" json:"pChCadde"`
+	PChSokak             string `xml:"pChSokak" json:"pChSokak"`
+	PChFax               string `xml:"pChFax" json:"pChFax"`
+	PChVergiDairesi      string `xml:"pChVergiDairesi" json:"pChVergiDairesi"`
+	PChVergiNumarasi     string `xml:"pChVergiNumarasi" json:"pChVergiNumarasi"`
+	PPlatformKisaAdi     string `xml:"pPlatformKisaAdi" json:"pPlatformKisaAdi"`
+	PPlatformSatisKodu   string `xml:"pPlatformSatisKodu" json:"pPlatformSatisKodu"`
+	PChTelEv             string `xml:"pChTelEv" json:"pChTelEv"`
+	PChTelIs             string `xml:"pChTelIs" json:"pChTelIs"`
 }
 
 // KargoBilgileriByReferans http://service.mngkargo.com.tr/musterikargosiparis/musterikargosiparis.asmx?op=KargoBilgileriByReferans
 type KargoBilgileriByReferans struct {
 	login
-	PSiparisNo  string `xml:"pSiparisNo"`
-	PGonderiNo  string `xml:"pGonderiNo"`
-	PFaturaSeri string `xml:"pFaturaSeri"`
-	PFaturaNo   string `xml:"pFaturaNo"`
-	PIrsaliyeNo string `xml:"pIrsaliyeNo"`
-	EFaturaNo   string `xml:"eFaturaNo"`
-	PRaporType  string `xml:"pRaporType"`
+	PSiparisNo  string `xml:"pSiparisNo" xml:"pSiparisNo"`
+	PGonderiNo  string `xml:"pGonderiNo" json:"pGonderiNo"`
+	PFaturaSeri string `xml:"pFaturaSeri" json:"pFaturaSeri"`
+	PFaturaNo   string `xml:"pFaturaNo" json:"pFaturaNo"`
+	PIrsaliyeNo string `xml:"pIrsaliyeNo" json:"pIrsaliyeNo"`
+	EFaturaNo   string `xml:"eFaturaNo" json:"eFaturaNo"`
+	PRaporType  string `xml:"pRaporType" json:"pRaporType"`
 }
 
 // MusteriSiparisIptal Cancel shipping - if the product has not shipped
 // http://service.mngkargo.com.tr/musterikargosiparis/musterikargosiparis.asmx?op=MusteriSiparisIptal
 type MusteriSiparisIptal struct {
 	login
-	PMusteriSiparisNo string `xml:"pMusteriSiparisNo"`
-	PSiparisTarihi    string `xml:"pSiparisTarihi"`
+	PMusteriSiparisNo string `xml:"pMusteriSiparisNo" json:"pMusteriSiparisNo"`
+	PSiparisTarihi    string `xml:"pSiparisTarihi" json:"pSiparisTarihi"`
 }
 
 // MusteriTeslimatIptalIstegi Cancel shipping - if the product has been shipped
 // http://service.mngkargo.com.tr/musterikargosiparis/musterikargosiparis.asmx?op=MusteriTeslimatIptalIstegi
 type MusteriTeslimatIptalIstegi struct {
 	login
-	PMusteriSiparisNo string `xml:"pMusteriSiparisNo"`
-	PIslemAciklama    string `xml:"pIslemAciklama"`
+	PMusteriSiparisNo string `xml:"pMusteriSiparisNo" json:"pMusteriSiparisNo"`
+	PIslemAciklama    string `xml:"pIslemAciklama" json:"pIslemAciklama"`
 }
 
 // MNGGonderiBarkod http://service.mngkargo.com.tr/musterikargosiparis/musterikargosiparis.asmx?op=MNGGonderiBarkod
 type MNGGonderiBarkod struct {
 	login
-	IrsaliyeNo               string     `xml:"IrsaliyeNo"`
-	OutBarkodType            string     `xml:"OutBarkodType"`
-	FlKapidaTahsilat         string     `xml:"FlKapidaTahsilat"`
-	UrunBedeli               string     `xml:"UrunBedeli"`
-	ChMesaj                  string     `xml:"ChMesaj"`
-	PChSiparisNo             string     `xml:"pChSiparisNo"`
-	PChIrsaliyeNo            string     `xml:"pChIrsaliyeNo"`
-	ReferansNo               string     `xml:"ReferansNo"`
-	PFlKapidaTahsilat        string     `xml:"pFlKapidaTahsilat"`
-	EkString1                string     `xml:"EkString1"`
-	EkString2                string     `xml:"EkString2"`
-	EkString3                string     `xml:"EkString3"`
-	EkString4                string     `xml:"EkString4"`
-	HatadaReferansBarkoduBas string     `xml:"HatadaReferansBarkoduBas"`
-	ParcaBilgi               ParcaBilgi `xml:"ParcaBilgi"`
+	IrsaliyeNo               string     `xml:"IrsaliyeNo" json:"IrsaliyeNo"`
+	OutBarkodType            string     `xml:"OutBarkodType" json:"OutBarkodType"`
+	FlKapidaTahsilat         string     `xml:"FlKapidaTahsilat" json:"FlKapidaTahsilat"`
+	UrunBedeli               string     `xml:"UrunBedeli" json:"UrunBedeli"`
+	ChMesaj                  string     `xml:"ChMesaj" json:"ChMesaj"`
+	PChSiparisNo             string     `xml:"pChSiparisNo" json:"pChSiparisNo"`
+	PChIrsaliyeNo            string     `xml:"pChIrsaliyeNo" json:"pChIrsaliyeNo"`
+	ReferansNo               string     `xml:"ReferansNo" json:"ReferansNo"`
+	PFlKapidaTahsilat        string     `xml:"pFlKapidaTahsilat" json:"pFlKapidaTahsilat"`
+	EkString1                string     `xml:"EkString1" json:"EkString1"`
+	EkString2                string     `xml:"EkString2" json:"EkString2"`
+	EkString3                string     `xml:"EkString3" json:"EkString3"`
+	EkString4                string     `xml:"EkString4" json:"EkString4"`
+	HatadaReferansBarkoduBas string     `xml:"HatadaReferansBarkoduBas" json:"HatadaReferansBarkoduBas"`
+	ParcaBilgi               ParcaBilgi `xml:"ParcaBilgi" json:"ParcaBilgi"`
 }
 
 type ParcaBilgi struct {
-	GonderiParca []GonderiParca `xml:"GonderiParca"`
+	GonderiParca []GonderiParca `xml:"GonderiParca" json:"GonderiParca"`
 }
 
 type GonderiParca struct {
-	Kg          int    `xml:"Kg"`
-	Desi        int    `xml:"Desi"`
-	Adet        int    `xml:"Adet"`
-	Icerik      string `xml:"Icerik"`
-	ParcaBarkod string `xml:"ParcaBarkod"`
+	Kg          int    `xml:"Kg" json:"Kg"`
+	Desi        int    `xml:"Desi" json:"Desi"`
+	Adet        int    `xml:"Adet" json:"Adet"`
+	Icerik      string `xml:"Icerik" json:"Icerik"`
+	ParcaBarkod string `xml:"ParcaBarkod" json:"ParcaBarkod"`
 }
