@@ -22,12 +22,15 @@ func main() {
 	mng.AddCredential("test user", "username", "password").SetActive(true)
 	mng.AddCredential("live user", "username", "password")
 
-	// You can use the CreateCargo either as a struct or as a json byte.
+	// You can use CreateCargo as a struct or a json byte or a xml byte.
 	// first example use with struct
-	structExample(mng)
+	//structExample(mng)
 
 	// second example use with json byte
 	//jsonExample(mng)
+
+	// third example use with xml byte
+	xmlExample(mng)
 
 }
 
@@ -43,7 +46,9 @@ func structExample(mng cargo.Shipper) {
 		log.Println("Create Error: ", err)
 	}
 
-	log.Println("Body: ", string(createResp.Data))
+	if createResp != nil {
+		log.Println("Body: ", string(createResp.Data))
+	}
 }
 
 func jsonExample(mng cargo.Shipper) {
@@ -88,5 +93,57 @@ func jsonExample(mng cargo.Shipper) {
 		log.Println("Create Error: ", err)
 	}
 
-	log.Println("Body: ", string(createResp.Data))
+	if createResp != nil {
+		log.Println("Body: ", string(createResp.Data))
+	}
+}
+
+func xmlExample(mng cargo.Shipper) {
+	xmlData := []byte(`<SiparisGirisiDetayliV3 xmlns="http://tempuri.org/">
+      <pChIrsaliyeNo>string xml ooo</pChIrsaliyeNo>
+      <pPrKiymet>string</pPrKiymet>
+      <pChBarkod>string</pChBarkod>
+      <pChIcerik>string</pChIcerik>
+      <pGonderiHizmetSekli>string</pGonderiHizmetSekli>
+      <pTeslimSekli>int</pTeslimSekli>
+      <pFlAlSms>int</pFlAlSms>
+      <pFlGnSms>int</pFlGnSms>
+      <pKargoParcaList>string</pKargoParcaList>
+      <pAliciMusteriMngNo>string</pAliciMusteriMngNo>
+      <pAliciMusteriBayiNo>string</pAliciMusteriBayiNo>
+      <pAliciMusteriAdi>string</pAliciMusteriAdi>
+      <pChSiparisNo>string</pChSiparisNo>
+      <pLuOdemeSekli>string</pLuOdemeSekli>
+      <pFlAdresFarkli>string</pFlAdresFarkli>
+      <pChIl>string</pChIl>
+      <pChIlce>string</pChIlce>
+      <pChAdres>string</pChAdres>
+      <pChSemt>string</pChSemt>
+      <pChMahalle>string</pChMahalle>
+      <pChMeydanBulvar>string</pChMeydanBulvar>
+      <pChCadde>string</pChCadde>
+      <pChSokak>string</pChSokak>
+      <pChTelEv>string</pChTelEv>
+      <pChTelCep>string</pChTelCep>
+      <pChTelIs>string</pChTelIs>
+      <pChFax>string</pChFax>
+      <pChEmail>string</pChEmail>
+      <pChVergiDairesi>string</pChVergiDairesi>
+      <pChVergiNumarasi>string</pChVergiNumarasi>
+      <pFlKapidaOdeme>int</pFlKapidaOdeme>
+      <pMalBedeliOdemeSekli>string</pMalBedeliOdemeSekli>
+      <pPlatformKisaAdi>string</pPlatformKisaAdi>
+      <pPlatformSatisKodu>string</pPlatformSatisKodu>
+      <pKullaniciAdi>string</pKullaniciAdi>
+      <pSifre>string</pSifre>
+    </SiparisGirisiDetayliV3>`)
+
+	createResp, err := mng.CreateCargo(xmlData)
+	if err != nil {
+		log.Println("Create Error: ", err)
+	}
+
+	if createResp != nil {
+		log.Println("Body: ", string(createResp.Data))
+	}
 }

@@ -20,9 +20,9 @@ type SiparisGirisiDetayliV3 struct {
 	PPrKiymet            string `xml:"pPrKiymet" json:"pPrKiymet"`
 	PChBarkod            string `xml:"pChBarkod" json:"pChBarkod"`
 	PGonderiHizmetSekli  string `xml:"pGonderiHizmetSekli" json:"pGonderiHizmetSekli"`
-	PTeslimSekli         int    `xml:"pTeslimSekli" json:"pTeslimSekli"`
-	PFlAlSms             int    `xml:"pFlAlSms" json:"pFlAlSms"`
-	PFlGnSms             int    `xml:"pFlGnSms" json:"pFlGnSms"`
+	PTeslimSekli         string `xml:"pTeslimSekli" json:"pTeslimSekli"`
+	PFlAlSms             string `xml:"pFlAlSms" json:"pFlAlSms"`
+	PFlGnSms             string `xml:"pFlGnSms" json:"pFlGnSms"`
 	PKargoParcaList      string `xml:"pKargoParcaList" json:"pKargoParcaList"`
 	PAliciMusteriAdi     string `xml:"pAliciMusteriAdi" json:"pAliciMusteriAdi"`
 	PChSiparisNo         string `xml:"pChSiparisNo" json:"pChSiparisNo"`
@@ -34,7 +34,7 @@ type SiparisGirisiDetayliV3 struct {
 	PChTelCep            string `xml:"pChTelCep" json:"pChTelCep"`
 	PChEmail             string `xml:"pChEmail" json:"pChEmail"`
 	PMalBedeliOdemeSekli string `xml:"pMalBedeliOdemeSekli" json:"pMalBedeliOdemeSekli"`
-	PFlKapidaOdeme       int    `xml:"pFlKapidaOdeme" json:"pFlKapidaOdeme"`
+	PFlKapidaOdeme       string `xml:"pFlKapidaOdeme" json:"pFlKapidaOdeme"`
 	PChIcerik            string `xml:"pChIcerik" json:"pChIcerik"`
 	PAliciMusteriMngNo   string `xml:"pAliciMusteriMngNo" json:"pAliciMusteriMngNo"`
 	PAliciMusteriBayiNo  string `xml:"pAliciMusteriBayiNo" json:"pAliciMusteriBayiNo"`
