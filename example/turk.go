@@ -6,7 +6,7 @@ import (
 	"github.com/mstgnz/shipping/util"
 )
 
-func main() {
+func ExampleTurk() {
 
 	turk, err := util.NewProviderByName("turk")
 
