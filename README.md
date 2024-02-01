@@ -1,6 +1,15 @@
 # shipping - Cargo Integration
 
-It can be annoying to deal with implementing each of the shipping integrations on e-commerce sites. Each shipping company has a separate api documentation. It is nothing but a waste of time to read and apply this documentation for each of them and to do this repeatedly in every project. This project provides integration with all cargo companies with Go and offers it to your service.
+Integrating with different shipping companies on e-commerce sites can be a time-consuming and cumbersome process. Each shipping company having its separate API documentation may lead to redundant efforts in reading and implementing these documents for each of them in every project. This project simplifies the process by providing integration with all cargo companies using the Go programming language.
+
+
+Features:
+- **Single Integration for All Shipping Companies:** This package offers a unified solution for integrating with various shipping companies. Instead of spending time on the API documentation of different companies separately, you can access them all through a single integration.
+- **Fast and Efficient:** Leveraging the performance advantages of the Go programming language, you can manage shipping processes quickly and efficiently. The primary goal of the project is to save developers time and optimize workflow.
+- **Modular Structure:** The package has a modular structure, allowing you to choose and configure the desired shipping companies. Include only the necessary integrations in your project.
+
+This project aims to make shipping integrations easier and faster, optimizing your development process.
+
 
 ## Cargo Companies
 | Name                                        | Domestic           | Abroad             |
@@ -33,6 +42,68 @@ Note: Integration will be made as the documentation of the relevant companies is
 - [ ] UPS Cargo
 - [ ] YURTİÇİ Cargo
 
+## Example:
+```go
+package main
+
+import (
+	"log"
+
+	"github.com/mstgnz/shipping/cargo/mng/soap"
+	"github.com/mstgnz/shipping/config"
+	"github.com/mstgnz/shipping/util"
+)
+
+func main() {
+
+	mng, err := util.NewProviderByName("mng")
+	if err != nil {
+		log.Fatalln("Init Error: ", err)
+	}
+
+	mng.SetServiceType(cargo.SOAP) // cargo.SOAP or cargo.REST
+	mng.SetMode(cargo.DEVELOPMENT) // cargo.PRODUCTION or cargo.DEVELOPMENT
+	mng.SetDomestic(true)          // True if the product is domestic, False if it is abroad
+	mng.AddEndpoint("mng", "https://service.mngkargo.com.tr/musterikargosiparis/musterikargosiparis.asmx?WSDL", "https://service.mngkargo.com.tr/tservis/musterikargosiparis.asmx?WSDL").SetActive(true)
+	mng.AddCredential("test user", "username", "password").SetActive(true)
+	mng.AddCredential("live user", "username", "password")
+
+	// You can use the CreateCargo either as a struct or as a json byte.
+	// first example use with struct
+	structExample(mng)
+
+	// second example use with json byte
+	//jsonExample(mng)
+
+}
+
+func structExample(mng cargo.Shipper) {
+	order := soap.SiparisGirisiDetayliV3{}
+
+	// this is not necessary because the already defined user information will be set in the background.
+	order.WsUserName = mng.GetCurrent().Credential.GetUsername()
+	order.WsPassword = mng.GetCurrent().Credential.GetPassword()
+
+	createResp, err := mng.CreateCargo(order)
+	if err != nil {
+		log.Println("Create Error: ", err)
+	}
+
+	log.Println("Body: ", string(createResp.Data))
+}
+
+func jsonExample(mng cargo.Shipper) {
+	jsonData := []byte(`{
+      "pChIrsaliyeNo":"", "pPrKiymet":"", "pChBarkod":"", "pGonderiHizmetSekli":"", "pTeslimSekli":0, "pFlAlSms":0, "pFlGnSms":0, "pKargoParcaList":"", "pAliciMusteriAdi":"", "pChSiparisNo":"", "pLuOdemeSekli":"", "pFlAdresFarkli":"", "pChIl":"", "pChIlce":"", "pChAdres":"", "pChTelCep":"", "pChEmail":"", "pMalBedeliOdemeSekli":"", "pFlKapidaOdeme":0, "pChIcerik":"", "pAliciMusteriMngNo":"", "pAliciMusteriBayiNo":"", "pChSemt":"", "pChMahalle":"", "pChMeydanBulvar":"", "pChCadde":"", "pChSokak":"", "pChFax":"", "pChVergiDairesi":"", "pChVergiNumarasi":"", "pPlatformKisaAdi":"", "pPlatformSatisKodu":"", "pChTelEv":"", "pChTelIs":""}`)
+
+	createResp, err := mng.CreateCargo(jsonData)
+	if err != nil {
+		log.Println("Create Error: ", err)
+	}
+
+	log.Println("Body: ", string(createResp.Data))
+}
+```
 
 ## Contributing
 This project is open-source, and contributions are welcome. Feel free to contribute or provide feedback of any kind.
