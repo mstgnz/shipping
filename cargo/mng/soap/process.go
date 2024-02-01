@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"encoding/json"
 	"encoding/xml"
-	"errors"
 	"fmt"
 	"io"
 	"net/http"
@@ -27,11 +26,14 @@ func CreateDomestic(current cargo.Current, data cargo.ShippingData) (*cargo.Resp
 	case SiparisGirisiDetayliV3:
 		orderData = content
 	case []byte:
-		if !json.Valid(content) {
-			return nil, errors.New("json []byte is not valid")
-		}
-		if err := json.Unmarshal(content, &orderData); err != nil {
-			return nil, err
+		if json.Valid(content) {
+			if err := json.Unmarshal(content, &orderData); err != nil {
+				return nil, fmt.Errorf("JSON Unmarshal Error: %s", err)
+			}
+		} else {
+			if err := xml.Unmarshal(content, &orderData); err != nil {
+				return nil, fmt.Errorf("XML Unmarshal Error: %s", err)
+			}
 		}
 	default:
 		return nil, fmt.Errorf("unsupported data type: %T", data)
