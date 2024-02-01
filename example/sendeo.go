@@ -6,7 +6,7 @@ import (
 	"github.com/mstgnz/shipping/util"
 )
 
-func main() {
+func ExampleSendeo() {
 
 	sendeo, err := util.NewProviderByName("sendeo")
 

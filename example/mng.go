@@ -8,7 +8,7 @@ import (
 	"github.com/mstgnz/shipping/util"
 )
 
-func main() {
+func ExampleMng() {
 
 	mng, err := util.NewProviderByName("mng")
 	if err != nil {
