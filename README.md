@@ -99,8 +99,7 @@ func structExample(mng cargo.Shipper) {
 }
 
 func jsonExample(mng cargo.Shipper) {
-	jsonData := []byte(`{
-      "pChIrsaliyeNo":"", "pPrKiymet":"", "pChBarkod":"", "pGonderiHizmetSekli":"", "pTeslimSekli":0, "pFlAlSms":0, "pFlGnSms":0, "pKargoParcaList":"", "pAliciMusteriAdi":"", "pChSiparisNo":"", "pLuOdemeSekli":"", "pFlAdresFarkli":"", "pChIl":"", "pChIlce":"", "pChAdres":"", "pChTelCep":"", "pChEmail":"", "pMalBedeliOdemeSekli":"", "pFlKapidaOdeme":0, "pChIcerik":"", "pAliciMusteriMngNo":"", "pAliciMusteriBayiNo":"", "pChSemt":"", "pChMahalle":"", "pChMeydanBulvar":"", "pChCadde":"", "pChSokak":"", "pChFax":"", "pChVergiDairesi":"", "pChVergiNumarasi":"", "pPlatformKisaAdi":"", "pPlatformSatisKodu":"", "pChTelEv":"", "pChTelIs":""}`)
+	jsonData := []byte(`{"pChIrsaliyeNo":"", "pPrKiymet":"", "pChBarkod":"", "pGonderiHizmetSekli":"", "pTeslimSekli":0, "pFlAlSms":0, "pFlGnSms":0, "pKargoParcaList":"", "pAliciMusteriAdi":"", "pChSiparisNo":"", "pLuOdemeSekli":"", "pFlAdresFarkli":"", "pChIl":"", "pChIlce":"", "pChAdres":"", "pChTelCep":"", "pChEmail":"", "pMalBedeliOdemeSekli":"", "pFlKapidaOdeme":0, "pChIcerik":"", "pAliciMusteriMngNo":"", "pAliciMusteriBayiNo":"", "pChSemt":"", "pChMahalle":"", "pChMeydanBulvar":"", "pChCadde":"", "pChSokak":"", "pChFax":"", "pChVergiDairesi":"", "pChVergiNumarasi":"", "pPlatformKisaAdi":"", "pPlatformSatisKodu":"", "pChTelEv":"", "pChTelIs":""}`)
 
 	createResp, err := mng.CreateCargo(jsonData)
 	if err != nil {
