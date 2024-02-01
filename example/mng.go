@@ -48,11 +48,6 @@ func structExample(mng cargo.Shipper) {
 
 func jsonExample(mng cargo.Shipper) {
 	jsonData := []byte(`{
-      "pKullaniciAdi":"",
-      "pSifre":"",
-      "WsUserName":"json datası bu",
-      "WsPassword":"",
-      "pMusteriNo":"",
       "pChIrsaliyeNo":"",
       "pPrKiymet":"",
       "pChBarkod":"",
