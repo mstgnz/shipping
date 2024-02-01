@@ -35,11 +35,41 @@ func (a arasCargo) CreateCargo(data cargo.ShippingData) (*cargo.Response, error)
 }
 
 func (a arasCargo) WhereIsTheCargo(data cargo.ShippingData) (*cargo.Response, error) {
-	//TODO implement me
-	panic("implement me")
+	var err error
+	var result *cargo.Response
+	switch a.GetServiceType() {
+	case cargo.SOAP:
+		if a.IsDomestic() {
+			result, err = soap.WhereIsTheCargoDomestic(a.GetCurrent(), data)
+		} else {
+			result, err = soap.WhereIsTheCargoAbroad(a.GetCurrent(), data)
+		}
+	case cargo.REST:
+		if a.IsDomestic() {
+			result, err = rest.WhereIsTheCargoDomestic(a.GetCurrent(), data)
+		} else {
+			result, err = rest.WhereIsTheCargoAbroad(a.GetCurrent(), data)
+		}
+	}
+	return result, err
 }
 
 func (a arasCargo) CancelCargo(data cargo.ShippingData) (*cargo.Response, error) {
-	//TODO implement me
-	panic("implement me")
+	var err error
+	var result *cargo.Response
+	switch a.GetServiceType() {
+	case cargo.SOAP:
+		if a.IsDomestic() {
+			result, err = soap.CancelCargoDomestic(a.GetCurrent(), data)
+		} else {
+			result, err = soap.CancelCargoAbroad(a.GetCurrent(), data)
+		}
+	case cargo.REST:
+		if a.IsDomestic() {
+			result, err = rest.CancelCargoDomestic(a.GetCurrent(), data)
+		} else {
+			result, err = rest.CancelCargoAbroad(a.GetCurrent(), data)
+		}
+	}
+	return result, err
 }
