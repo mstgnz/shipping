@@ -4,9 +4,15 @@ import (
 	"log"
 
 	"github.com/mstgnz/shipping/cargo/mng/soap"
-	"github.com/mstgnz/shipping/config"
+	cargo "github.com/mstgnz/shipping/config"
 	"github.com/mstgnz/shipping/util"
 )
+
+type Result[Output any, Fault any] struct {
+	state  int
+	fault  Fault
+	output Output
+}
 
 func ExampleMng() {
 
